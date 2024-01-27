@@ -3,28 +3,28 @@ import pyautogui as pg
 import time
 import keyboard
 
+# Constantes
+PAUSA_VERIFICACAO = 0.5
+TECLAS = ['7', '0', '9', '7', '8', '6']
+INTERVALOS = [0.1, 2, 2, 0.1, 2, 0]
+
 pause_programa = False
 finalizar_programa = False
 
-def x():
+def combo():
+    global pause_programa
     while not finalizar_programa:
         if pause_programa:
-            time.sleep(0.5)  # Aguarda um segundo antes de verificar novamente
+            time.sleep(PAUSA_VERIFICACAO)
             continue
-            #hotkeys:
-        pg.press('7')
-        time.sleep(0.1)
-        pg.press('0')
-        time.sleep(2)
-        pg.press('9')
-        time.sleep(2)
-        pg.press('7')
-        time.sleep(0.1)
-        pg.press('8')
-        time.sleep(2)
-        pg.press('6')
+        # hotkeys:
+        for tecla, intervalo in zip(TECLAS, INTERVALOS):
+            if pause_programa:
+                break  # Sair do loop se pausa for acionada durante a iteração
+            pg.press(tecla)
+            time.sleep(intervalo)
 
-def y():
+def pause():
     global pause_programa, finalizar_programa
     while not finalizar_programa:
         if keyboard.is_pressed('p'):
@@ -33,14 +33,14 @@ def y():
                 print('pausado')
             else:
                 print('retomado')
-            time.sleep(1)  # Aguarda um segundo para evitar pressionar 'p' várias vezes
+            time.sleep(1)
 
 # Iniciar threads
-thread_x = threading.Thread(target=x)
-thread_y = threading.Thread(target=y)
+thread_combo = threading.Thread(target=combo)
+thread_pause = threading.Thread(target=pause)
 
-thread_x.start()
-thread_y.start()
+thread_combo.start()
+thread_pause.start()
 
 # Aguardar até que o usuário pressione 'o' para finalizar o programa
 while True:
@@ -49,7 +49,7 @@ while True:
         break
 
 # Aguardar até que as threads terminem
-thread_x.join()
-thread_y.join()
+thread_combo.join()
+thread_pause.join()
 
 print('Programa finalizado')
