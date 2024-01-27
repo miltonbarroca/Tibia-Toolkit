@@ -2,7 +2,17 @@ import threading
 import pyautogui as pg
 import time
 import keyboard
-
+'''
+ATK SPELLS
+0 - exori mas
+9 - exori
+8 - exori gran
+6 - exori amp kor
+SUP SPELLS
+7 - exeta res
+4 - utito tempo
+i - utamo tempo
+'''
 # Constantes
 PAUSA_VERIFICACAO = 0.5
 ATK_SPELLS = ['7', '0', '9', '7', '8', '6'] #HOTKEYS das magias de ataque
@@ -17,7 +27,7 @@ def combo_atk():
         if pause_programa:
             time.sleep(PAUSA_VERIFICACAO)
             continue
-        # hotkeys:
+
         for tecla, intervalo in zip(ATK_SPELLS, INTERVALOS):
             if pause_programa:
                 break  # Sair do loop se pausa for acionada durante a iteração
