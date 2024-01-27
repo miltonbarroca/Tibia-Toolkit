@@ -11,7 +11,6 @@ def x():
         if pause_programa:
             time.sleep(0.5)  # Aguarda um segundo antes de verificar novamente
             continue
-
             #hotkeys:
         pg.press('7')
         time.sleep(0.1)
@@ -19,28 +18,31 @@ def x():
         time.sleep(2)
         pg.press('9')
         time.sleep(2)
+        pg.press('7')
+        time.sleep(0.1)
         pg.press('8')
         time.sleep(2)
         pg.press('6')
-
 def y():
     global pause_programa, finalizar_programa
+    ultimo_pressionamento = 0
     while not finalizar_programa:
+        if time.time() - ultimo_pressionamento < 1:
+            continue
         if keyboard.is_pressed('p'):
             pause_programa = not pause_programa
+            ultimo_pressionamento = time.time()
             if pause_programa:
                 print('pausado')
             else:
                 print('retomado')
-            time.sleep(1)  # Aguarda um segundo para evitar pressionar 'p' várias vezes
-
+            time.sleep(1)
 # Iniciar threads
 thread_x = threading.Thread(target=x)
 thread_y = threading.Thread(target=y)
 
 thread_x.start()
 thread_y.start()
-
 # Aguardar até que o usuário pressione 'o' para finalizar o programa
 while True:
     if keyboard.is_pressed('o'):
