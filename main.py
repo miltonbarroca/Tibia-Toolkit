@@ -5,20 +5,20 @@ import keyboard
 
 # Constantes
 PAUSA_VERIFICACAO = 0.5
-TECLAS = ['7', '0', '9', '7', '8', '6']
+ATK_SPELLS = ['7', '0', '9', '7', '8', '6'] #HOTKEYS das magias de ataque
 INTERVALOS = [0.1, 2, 2, 0.1, 2, 0]
 
 pause_programa = False
 finalizar_programa = False
 
-def combo():
+def combo_atk():
     global pause_programa
     while not finalizar_programa:
         if pause_programa:
             time.sleep(PAUSA_VERIFICACAO)
             continue
         # hotkeys:
-        for tecla, intervalo in zip(TECLAS, INTERVALOS):
+        for tecla, intervalo in zip(ATK_SPELLS, INTERVALOS):
             if pause_programa:
                 break  # Sair do loop se pausa for acionada durante a iteração
             pg.press(tecla)
@@ -36,10 +36,10 @@ def pause():
             time.sleep(1)
 
 # Iniciar threads
-thread_combo = threading.Thread(target=combo)
+thread_combo_atk = threading.Thread(target=combo_atk)
 thread_pause = threading.Thread(target=pause)
 
-thread_combo.start()
+thread_combo_atk.start()
 thread_pause.start()
 
 # Aguardar até que o usuário pressione 'o' para finalizar o programa
@@ -49,7 +49,7 @@ while True:
         break
 
 # Aguardar até que as threads terminem
-thread_combo.join()
+thread_combo_atk.join()
 thread_pause.join()
 
 print('Programa finalizado')
