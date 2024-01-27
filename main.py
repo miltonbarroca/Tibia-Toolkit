@@ -2,24 +2,33 @@ import threading
 import pyautogui as pg
 import time
 import keyboard
-'''
-ATK SPELLS
-0 - exori mas
-9 - exori
-8 - exori gran
-6 - exori amp kor
-SUP SPELLS
-7 - exeta res
-4 - utito tempo
-i - utamo tempo
-'''
+import random
+
+#ATK SPELLS
+#0 - exori mas
+#9 - exori
+#8 - exori gran
+#6 - exori amp kor
+#SUP SPELLS
+#7 - exeta res
+#4 - utito tempo
+#i - utamo tempo
+
 # Constantes
 PAUSA_VERIFICACAO = 0.5
-ATK_SPELLS = ['7', '0', '9', '7', '8', '6'] #HOTKEYS das magias de ataque
-INTERVALOS = [0.1, 2, 2, 0.1, 2, 0]
+ATK_SPELLS = ['0', '9', '8', '6']  # HOTKEYS das magias de ataque
+SUP_SPELLS = ['7']  # Adicione as HOTKEYS das magias de suporte aqui
+ATK_INTERVALOS = [random.uniform(2, 3) for _ in ATK_SPELLS]
 
 pause_programa = False
 finalizar_programa = False
+
+def combo_sup():
+    global pause_programa
+    for tecla in SUP_SPELLS:
+        if pause_programa:
+            break
+        pg.press(tecla)
 
 def combo_atk():
     global pause_programa
@@ -27,8 +36,10 @@ def combo_atk():
         if pause_programa:
             time.sleep(PAUSA_VERIFICACAO)
             continue
-
-        for tecla, intervalo in zip(ATK_SPELLS, INTERVALOS):
+        # Executar as sup spells no início do combo_atk
+        combo_sup()
+        # hotkeys de ataque com intervalos aleatórios:
+        for tecla, intervalo in zip(ATK_SPELLS, ATK_INTERVALOS):
             if pause_programa:
                 break  # Sair do loop se pausa for acionada durante a iteração
             pg.press(tecla)
