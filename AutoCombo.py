@@ -18,7 +18,7 @@ import random
 PAUSA_VERIFICACAO = 0.5
 ATK_SPELLS = ['0', '9', '8', '6']  # HOTKEYS das magias de ataque
 SUP_SPELLS = ['7']  # Adicione as HOTKEYS das magias de suporte aqui
-ATK_INTERVALOS = [random.uniform(2, 3) for _ in ATK_SPELLS]
+ATK_INTERVALOS = [random.uniform(2, 2.5) for _ in ATK_SPELLS]
 
 pause_programa = False
 finalizar_programa = False
