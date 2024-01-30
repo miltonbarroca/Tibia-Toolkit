@@ -17,15 +17,15 @@ import random
 # Constantes
 PAUSA_VERIFICACAO = 0.5
 ATK_SPELLS = ['0', '9', '8', '6']  # HOTKEYS das magias de ataque
-SUP_SPELLS = ['7']  # Adicione as HOTKEYS das magias de suporte aqui
+EXETA = ['7']  # Adicione as HOTKEYS das magias de suporte aqui
 ATK_COOLDOWNS = [random.uniform(2, 2.5) for _ in ATK_SPELLS]
 
 pause_programa = False
 finalizar_programa = False
 
-def combo_sup():
+def combo_exeta():
     global pause_programa
-    for tecla in SUP_SPELLS:
+    for tecla in EXETA:
         if pause_programa:
             break
         pg.press(tecla)
@@ -37,11 +37,14 @@ def combo_atk():
             time.sleep(PAUSA_VERIFICACAO)
             continue
         # Executar as sup spells no início do combo_atk
-        combo_sup()
+        combo_exeta()
         # hotkeys de ataque com cooldowns aleatórios:
         for tecla, cooldown in zip(ATK_SPELLS, ATK_COOLDOWNS):
             if pause_programa:
                 break  # Sair do loop se pausa for acionada durante a iteração
+            if tecla == '8':
+                # Executar exeta antes de pressionar '8'
+                combo_exeta()
             pg.press(tecla)
             time.sleep(cooldown)
 
