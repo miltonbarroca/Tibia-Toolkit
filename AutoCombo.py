@@ -4,21 +4,21 @@ import time
 import keyboard
 import random
 
-#ATK SPELLS
-#0 - exori mas
-#9 - exori
-#8 - exori gran
-#6 - exori amp kor
-#SUP SPELLS
-#7 - exeta res
-#4 - utito tempo
-#i - utamo tempo
+# ATK SPELLS
+# 0 - exori mas
+# 9 - exori
+# 8 - exori gran
+# 6 - exori amp kor
+# SUP SPELLS
+# 7 - exeta res
+# 4 - utito tempo
+# i - utamo tempo
 
 # Constantes
 PAUSA_VERIFICACAO = 0.5
 ATK_SPELLS = ['0', '9', '8', '6']  # HOTKEYS das magias de ataque
 SUP_SPELLS = ['7']  # Adicione as HOTKEYS das magias de suporte aqui
-ATK_INTERVALOS = [random.uniform(2, 2.5) for _ in ATK_SPELLS]
+ATK_COOLDOWNS = [random.uniform(2, 2.5) for _ in ATK_SPELLS]
 
 pause_programa = False
 finalizar_programa = False
@@ -38,12 +38,12 @@ def combo_atk():
             continue
         # Executar as sup spells no início do combo_atk
         combo_sup()
-        # hotkeys de ataque com intervalos aleatórios:
-        for tecla, intervalo in zip(ATK_SPELLS, ATK_INTERVALOS):
+        # hotkeys de ataque com cooldowns aleatórios:
+        for tecla, cooldown in zip(ATK_SPELLS, ATK_COOLDOWNS):
             if pause_programa:
                 break  # Sair do loop se pausa for acionada durante a iteração
             pg.press(tecla)
-            time.sleep(intervalo)
+            time.sleep(cooldown)
 
 def pause():
     global pause_programa, finalizar_programa
