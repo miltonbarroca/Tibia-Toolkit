@@ -56,7 +56,13 @@ def pause():
                 print('retomado')
             time.sleep(1)
 
-# Iniciar threads
+# Esperar pela tecla '=' antes de começar
+print('Aguardando pela tecla "=" para iniciar...')
+while True:
+    if keyboard.is_pressed('='):
+        break
+
+# Iniciar threads após a tecla '=' ser pressionada
 thread_combo_atk = threading.Thread(target=combo_atk)
 thread_pause = threading.Thread(target=pause)
 
