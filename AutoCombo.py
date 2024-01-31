@@ -19,7 +19,7 @@ PAUSA_VERIFICACAO = 0.5
 ATK_SPELLS = ['0', '9', '8', '6']  # HOTKEYS das magias de ataque
 EXETA = ['7']  # HOTKEYS das magias de suporte
 UTITO = ['4']  # HOTKEYS das magias de suporte
-ATK_COOLDOWNS = [random.uniform(2, 2.5) for _ in ATK_SPELLS]
+ATK_COOLDOWNS = [random.uniform(2, 2.4) for _ in ATK_SPELLS]
 
 # Coordenadas
 loot_coordinates = [
