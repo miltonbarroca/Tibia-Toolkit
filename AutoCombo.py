@@ -17,7 +17,8 @@ import random
 # Constantes
 PAUSA_VERIFICACAO = 0.5
 ATK_SPELLS = ['0', '9', '8', '6']  # HOTKEYS das magias de ataque
-EXETA = ['7']  # Adicione as HOTKEYS das magias de suporte aqui
+EXETA = ['7']  # HOTKEYS das magias de suporte
+UTITO = ['4']  # HOTKEYS das magias de suporte
 ATK_COOLDOWNS = [random.uniform(2, 2.5) for _ in ATK_SPELLS]
 
 pause_programa = False
@@ -26,6 +27,13 @@ finalizar_programa = False
 def combo_exeta():
     global pause_programa
     for tecla in EXETA:
+        if pause_programa:
+            break
+        pg.press(tecla)
+
+def combo_utito():
+    global pause_programa
+    for tecla in UTITO:
         if pause_programa:
             break
         pg.press(tecla)
@@ -45,6 +53,9 @@ def combo_atk():
             if tecla == '8':
                 # Executar exeta antes de pressionar '8'
                 combo_exeta()
+            if tecla == '9':
+                # Executar utito antes de pressionar '9'
+                combo_utito()
             pg.press(tecla)
             time.sleep(cooldown)
 
