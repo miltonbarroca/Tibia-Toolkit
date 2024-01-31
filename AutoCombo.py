@@ -21,6 +21,33 @@ EXETA = ['7']  # HOTKEYS das magias de suporte
 UTITO = ['4']  # HOTKEYS das magias de suporte
 ATK_COOLDOWNS = [random.uniform(2, 2.5) for _ in ATK_SPELLS]
 
+# Coordenadas
+loot_coordinates = [
+    (923, 305),
+    (991, 322),
+    (992, 389),
+    (1000, 461),
+    (926, 454),
+    (853, 442),
+    (851, 383),
+    (852, 328)
+]
+
+def get_loot():
+    keyboard.wait('h')
+    for coord in loot_coordinates:
+        # Move o mouse para a coordenada
+        pg.moveTo(coord[0], coord[1])
+        
+        # Espera um breve momento (opcional)
+        time.sleep(0.1)
+        
+        # Clique com o botão direito
+        pg.click(button='right')
+        
+        # Espera um breve momento antes de passar para a próxima coordenada (opcional)
+        time.sleep(0.1)
+
 pause_programa = False
 finalizar_programa = False
 
