@@ -2,7 +2,14 @@ import threading
 import pyautogui as pg
 import time
 import keyboard
-from conf import Constants
+import random
+
+
+PAUSA_VERIFICACAO = 0.5
+ATK_SPELLS = ['0', '9', '8', '6']  # HOTKEYS das magias de ataque
+EXETA = ['7']
+UTITO = ['4']
+ATK_COOLDOWNS = [random.uniform(2, 2.4) for _ in ATK_SPELLS]
 
 # ATK SPELLS
 # 0 - exori mas
@@ -19,28 +26,28 @@ finalizar_programa = False
 
 def combo_exeta():
     global pause_programa
-    for tecla in Constants.EXETA:
+    for tecla in EXETA:
         if pause_programa:
             break
         pg.press(tecla)
 
 def combo_utito():
     global pause_programa
-    for tecla in Constants.UTITO:
+    for tecla in UTITO:
         if pause_programa:
             break
         pg.press(tecla)
 
-def combo_atk():
+def auto_combo():
     global pause_programa
     while not finalizar_programa:
         if pause_programa:
-            time.sleep(Constants.PAUSA_VERIFICACAO)
+            time.sleep(PAUSA_VERIFICACAO)
             continue
         # Executar as sup spells no início do combo_atk
         combo_exeta()
         # hotkeys de ataque com cooldowns aleatórios:
-        for tecla, cooldown in zip(Constants.ATK_SPELLS, Constants.ATK_COOLDOWNS):
+        for tecla, cooldown in zip(ATK_SPELLS, ATK_COOLDOWNS):
             if pause_programa:
                 break  # Sair do loop se pausa for acionada durante a iteração
             if tecla == '8':
@@ -70,7 +77,7 @@ while True:
         break
 
 # Iniciar threads após a tecla '=' ser pressionada
-thread_combo_atk = threading.Thread(target=combo_atk)
+thread_combo_atk = threading.Thread(target=auto_combo)
 thread_pause = threading.Thread(target=pause)
 
 thread_combo_atk.start()
