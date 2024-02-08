@@ -23,7 +23,7 @@ O Auto Combo permite que os Knights executem combos de magias automaticamente, o
 
 | Funcionalidade | Suporte  |
 | -------------- | -------- |
-| AutoLoot       | ❌       |
+| AutoLoot       | ✅🚧     |
 | AutoCombo      | ✅       |
 | AutoHeal       | ❌       |
 | AutoMana       | ❌       |
