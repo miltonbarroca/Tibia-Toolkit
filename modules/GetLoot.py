@@ -24,18 +24,16 @@ def get_window_position(window_title):
 def get_loot(window_title):
     window_left, window_top = get_window_position(window_title)
     keyboard.wait('h')
+    
+    # Pressiona a tecla Shift
+    keyboard.press('shift')
+    
     for coord in loot_coordinates:
-        # Move o mouse para a coordenada ajustada à janela
         pg.moveTo(window_left + coord[0], window_top + coord[1])
-        
-        # Espera um breve momento (opcional)
-        time.sleep(0.1)
-        
-        # Clique com o botão direito
         pg.click(button='right')
-        
-        # Espera um breve momento antes de passar para a próxima coordenada (opcional)
-        time.sleep(0.1)
+    
+    # Libera a tecla Shift após o loop
+    keyboard.release('shift')
 
 # Substitua 'Nome_da_Janela' pelo título da sua janela específica
-get_loot('Tibia - Brunao Qqmuda') 
+get_loot('Tibia - Brunao Qqmuda')
