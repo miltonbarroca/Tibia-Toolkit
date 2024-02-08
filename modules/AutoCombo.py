@@ -1,4 +1,3 @@
-# modules/AutoCombo.py
 import threading
 import pyautogui as pg
 import time
