@@ -1,6 +1,10 @@
+# main.py
 import threading
 import keyboard
-from modules.AutoCombo import *
+from modules.AutoCombo import auto_combo, pause, set_finalizar_programa
+
+pause_programa = False
+finalizar_programa = False
 
 # Esperar pela tecla '=' antes de começar
 print('Aguardando pela tecla "=" para iniciar...')
@@ -18,7 +22,7 @@ thread_pause.start()
 # Aguardar até que o usuário pressione 'o' para finalizar o programa
 while True:
     if keyboard.is_pressed('o'):
-        finalizar_programa = True
+        set_finalizar_programa(True)
         break
 
 # Aguardar até que as threads terminem

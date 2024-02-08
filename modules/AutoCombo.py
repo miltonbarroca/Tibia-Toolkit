@@ -1,3 +1,5 @@
+# modules/AutoCombo.py
+import threading
 import pyautogui as pg
 import time
 import keyboard
@@ -47,3 +49,7 @@ def pause():
             else:
                 print('retomado')
             time.sleep(1)
+
+def set_finalizar_programa(value):
+    global finalizar_programa
+    finalizar_programa = value
