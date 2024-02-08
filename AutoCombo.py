@@ -2,7 +2,7 @@ import threading
 import pyautogui as pg
 import time
 import keyboard
-import random
+from conf import Constants
 
 # ATK SPELLS
 # 0 - exori mas
@@ -14,26 +14,19 @@ import random
 # 4 - utito tempo
 # i - utamo tempo
 
-# Constantes
-PAUSA_VERIFICACAO = 0.5
-ATK_SPELLS = ['0', '9', '8', '6']  # HOTKEYS das magias de ataque
-EXETA = ['7']  # HOTKEYS das magias de suporte
-UTITO = ['4']  # HOTKEYS das magias de suporte
-ATK_COOLDOWNS = [random.uniform(2, 2.4) for _ in ATK_SPELLS]
-
 pause_programa = False
 finalizar_programa = False
 
 def combo_exeta():
     global pause_programa
-    for tecla in EXETA:
+    for tecla in Constants.EXETA:
         if pause_programa:
             break
         pg.press(tecla)
 
 def combo_utito():
     global pause_programa
-    for tecla in UTITO:
+    for tecla in Constants.UTITO:
         if pause_programa:
             break
         pg.press(tecla)
@@ -42,12 +35,12 @@ def combo_atk():
     global pause_programa
     while not finalizar_programa:
         if pause_programa:
-            time.sleep(PAUSA_VERIFICACAO)
+            time.sleep(Constants.PAUSA_VERIFICACAO)
             continue
         # Executar as sup spells no início do combo_atk
         combo_exeta()
         # hotkeys de ataque com cooldowns aleatórios:
-        for tecla, cooldown in zip(ATK_SPELLS, ATK_COOLDOWNS):
+        for tecla, cooldown in zip(Constants.ATK_SPELLS, Constants.ATK_COOLDOWNS):
             if pause_programa:
                 break  # Sair do loop se pausa for acionada durante a iteração
             if tecla == '8':
