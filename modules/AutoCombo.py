@@ -17,14 +17,14 @@ from conf import Constants
 pause_programa = False
 finalizar_programa = False
 
-def combo_exeta():
+def exeta():
     global pause_programa
     for tecla in Constants.EXETA:
         if pause_programa:
             break
         pg.press(tecla)
 
-def combo_utito():
+def utito():
     global pause_programa
     for tecla in Constants.UTITO:
         if pause_programa:
@@ -37,18 +37,14 @@ def auto_combo():
         if pause_programa:
             time.sleep(Constants.PAUSA_VERIFICACAO)
             continue
-        # Executar as sup spells no início do combo_atk
-        combo_exeta()
-        # hotkeys de ataque com cooldowns aleatórios:
+        exeta()
         for tecla, cooldown in zip(Constants.ATK_SPELLS, Constants.ATK_COOLDOWNS):
             if pause_programa:
                 break  # Sair do loop se pausa for acionada durante a iteração
             if tecla == '8':
-                # Executar exeta antes de pressionar '8'
-                combo_exeta()
+                exeta()
             if tecla == '9':
-                # Executar utito antes de pressionar '9'
-                combo_utito()
+                utito()
             pg.press(tecla)
             time.sleep(cooldown)
 
