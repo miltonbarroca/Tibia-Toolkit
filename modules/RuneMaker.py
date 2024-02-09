@@ -10,17 +10,17 @@ root.title("MyInterface")
 root.geometry("500x500+250+250")
 root.resizable(False, False)
 
-def generate_widget(widget, row, column, sticky="NSEW", **kwargs):
+def generate_widget(widget, row, column, sticky="NSEW",columnspan=None, **kwargs):
     my_widget = widget(**kwargs)
-    my_widget.grid(row=row, column=column, padx=5, pady=4, sticky=sticky)
+    my_widget.grid(row=row, column=column, padx=5, pady=5,columnspan=columnspan, sticky=sticky)
     return my_widget
 
 def load_thrash():
-    caminho_imagem = os.path.join('img', 'trash.png')
+    caminho_imagem = os.path.join('img', 'trash.png')    
     load_img = Image.open(caminho_imagem)
-    diretorio_principal = os.path.dirname(os.path.abspath(load_img.filename))
-    photo_img = ImageTk.PhotoImage(load_img)
-    
+    resized_image = load_img.resize((20, 20))
+    diretorio_principal = os.path.dirname(os.path.abspath(load_img.filename))  
+    photo_img = ImageTk.PhotoImage(resized_image) 
     return photo_img, diretorio_principal
 
 lbl_food = generate_widget(Label, row=0, column=0, sticky="W", text="Hotkey Eat Food", font=("Roboto", 12))
@@ -36,6 +36,8 @@ lbl_mana_position = generate_widget(Label, row=2, column=1, text="Empty", font=(
 
 
 trash_img, trash_dir = load_thrash()
-btn_mana_position_trash = generate_widget(Button, row=2, column=1, image=trash_img, command=lambda: print("Button Clicked"))
+btn_mana_position_trash = generate_widget(Button, row=3, column=0, image=trash_img,sticky="E")
+
+btn_opacity = generate_widget(Button,row=3,column=0,text="Aplly Opacity",columnspan=2)
 
 root.mainloop()
