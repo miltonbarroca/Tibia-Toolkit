@@ -31,6 +31,7 @@ O Auto Combo permite que os Knights executem combos de magias automaticamente, o
 | AutoAmulet     | ❌       |
 | AutoRing       | ❌       |
 | FoodEater      | ❌       |
+| RuneMaker      | ❌       |
 
 ### Como Contribuir:
 
