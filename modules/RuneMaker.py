@@ -6,6 +6,7 @@ import os
 import keyboard
 import pyautogui
 from conf.window import hidden_client
+import json
 
 
 HOTKEYS = ['off', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12']
@@ -41,14 +42,19 @@ cbx_food.current(0)
 lbl_cast = generate_widget(Label, row=1, column=0, sticky="W", text="Hotkey Cast Spell", font=("Roboto", 12))
 cbx_cast = generate_widget(Combobox, row=1, column=1, values=HOTKEYS, state="readonly", font=("Roboto", 12), width=12)
 cbx_cast.current(0)
+rgb = ''
+mana_position = ''
 
 def get_mana_position():
+    global rgb
+    global mana_position
     messagebox.showinfo(title="Mana Position", message="Posicione o mouse em cima da barra de mana e pressione a tecla insert(INS)")
     keyboard.wait('insert')
     x, y = pyautogui.position()
     rgb = pyautogui.screenshot().getpixel((x, y))
     messagebox.showinfo(title='Mana Result', message=f"X: {x} Y: {y} - RGB: {rgb}")
     lbl_mana_position.configure(text=f"({x},{y})")
+    mana_position = [x,y]
 
 
 
@@ -72,8 +78,36 @@ def opacity():
 
 btn_opacity = generate_widget(Button, row=3, column=0, text="Apply Opacity", columnspan=2, command=opacity)
 
+def save():
+    print('Salvando Arquivos')
+    my_data = {
+        "food": {
+            "value": cbx_food.get(),
+            "position": cbx_food.current()
+        },
+        "spell": {
+            "value": cbx_cast.get(),
+            "position": cbx_cast.current()
+        },
+        "mana_pos":{
+            "position": mana_position,
+            "rgb": rgb
+        }
+    }
 
-btn_load = generate_widget(Button,row=4,column=0,text="Load")
-btn_start = generate_widget(Button,row=4,column=1,text="Start")
+    with open('infos.json','w') as file:
+        file.write(json.dumps(my_data))
+
+def load():
+    with open('infos.json', 'r') as file:
+        data = json.loads(file.read())
+    cbx_food.current(data['food']['position'])
+    cbx_cast.current(data['spell']['position'])
+    lbl_mana_position.configure(text=data['mana_pos']['position'])
+    return data
+
+btn_load = generate_widget(Button,row=4,column=0,text="Load",command=load)
+btn_start = generate_widget(Button,row=4,column=1,text="Start",command=save)
+
 
 root.mainloop()
