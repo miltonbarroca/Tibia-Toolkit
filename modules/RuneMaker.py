@@ -7,6 +7,8 @@ import keyboard
 import pyautogui
 from conf.window import hidden_client
 import json
+import threading
+import pynput
 
 
 HOTKEYS = ['off', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12']
@@ -107,7 +109,27 @@ def load():
     return data
 
 btn_load = generate_widget(Button,row=4,column=0,text="Load",command=load)
-btn_start = generate_widget(Button,row=4,column=1,text="Start",command=save)
+
+def run():
+    pass
+
+def key_code(key):
+    if key == pynput.keyboard.Key.esc:
+        myEvent.set()
+        return False
+
+def start():
+    global data
+    data = load()
+    global myEvent
+    myEvent = threading.Event()
+    global start_th
+    start_th = threading.Thread(target=run)
+    with pynput.keyboard.Listener(on_press=key_code) as listener:
+        listener.join()
+    
+
+btn_start = generate_widget(Button,row=4,column=1,text="Start",command=start)
 
 
 root.mainloop()
