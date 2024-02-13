@@ -1,13 +1,16 @@
 from tkinter.ttk import Label, Button, Combobox, Style
+from tkinter import messagebox
 from ttkthemes import ThemedTk
 from PIL import Image, ImageTk
 import os
+import keyboard
+import pyautogui
+
 
 HOTKEYS = ['off', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12']
 
 root = ThemedTk(theme="black", themebg=True)
 root.title("MyInterface")
-#root.geometry("500x500+250+250")
 root.resizable(False, False)
 style = Style()
 style.configure('TButton', font=("Roboto", 12))
@@ -23,11 +26,8 @@ def load_thrash():
     load_img = Image.open(caminho_imagem)
     resized_image = load_img.resize((20, 20))
     diretorio_principal = os.path.dirname(os.path.abspath(load_img.filename))  
-
-    # Make photo_img a global variable
     global photo_img
     photo_img = ImageTk.PhotoImage(resized_image)
-
     return diretorio_principal, photo_img
 
 
@@ -39,13 +39,20 @@ lbl_cast = generate_widget(Label, row=1, column=0, sticky="W", text="Hotkey Cast
 cbx_cast = generate_widget(Combobox, row=1, column=1, values=HOTKEYS, state="readonly", font=("Roboto", 12), width=12)
 cbx_cast.current(0)
 
-btn_mana_position = generate_widget(Button, row=2, column=0, text="Mana Position")
-lbl_mana_position = generate_widget(Label, row=2, column=1, text="Empty", font=("Roboto", 12), sticky="W")
+def get_mana_position():
+    messagebox.showinfo(title="Mana Position", message="Posicione o mouse em cima da barra de mana e pressione a tecla insert(INS)")
+    keyboard.wait('insert')
+    x, y = pyautogui.position()
+    rgb = pyautogui.screenshot().getpixel((x, y))
+    messagebox.showinfo(title='Mana Result', message=f"X: {x} Y: {y} - RGB: {rgb}")
 
+
+
+btn_mana_position = generate_widget(Button, row=2, column=0, text="Mana Position",command=get_mana_position)
+lbl_mana_position = generate_widget(Label, row=2, column=1, text="Empty", font=("Roboto", 12), sticky="W")
 
 trash_dir, trash_img = load_thrash()  
 btn_mana_position_trash = generate_widget(Button, row=2, column=1, image=photo_img, sticky="E")
-
 
 btn_opacity = generate_widget(Button, row=3, column=0, text="Aplly Opacity", columnspan=2)
 
