@@ -45,6 +45,7 @@ def get_mana_position():
     x, y = pyautogui.position()
     rgb = pyautogui.screenshot().getpixel((x, y))
     messagebox.showinfo(title='Mana Result', message=f"X: {x} Y: {y} - RGB: {rgb}")
+    lbl_mana_position.configure(text=f"({x},{y})")
 
 
 
@@ -52,7 +53,11 @@ btn_mana_position = generate_widget(Button, row=2, column=0, text="Mana Position
 lbl_mana_position = generate_widget(Label, row=2, column=1, text="Empty", font=("Roboto", 12), sticky="W")
 
 trash_dir, trash_img = load_thrash()  
-btn_mana_position_trash = generate_widget(Button, row=2, column=1, image=photo_img, sticky="E")
+
+def clear():
+    lbl_mana_position.configure(text="Empty")
+
+btn_mana_position_trash = generate_widget(Button, row=2, column=1, image=photo_img, sticky="E",command=clear)
 
 btn_opacity = generate_widget(Button, row=3, column=0, text="Aplly Opacity", columnspan=2)
 
