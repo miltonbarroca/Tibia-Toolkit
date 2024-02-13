@@ -8,8 +8,8 @@ import pyautogui
 from conf.window import hidden_client
 import json
 import threading
-import pynput
-
+import pynput.keyboard
+import time
 
 HOTKEYS = ['off', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12']
 
@@ -26,7 +26,6 @@ def generate_widget(widget, row, column, sticky="NSEW", columnspan=None, **kwarg
     my_widget.grid(row=row, column=column, padx=5, pady=5, columnspan=columnspan, sticky=sticky)
     return my_widget
 
-
 def load_thrash():
     caminho_imagem = os.path.join('img', 'trash.png')    
     load_img = Image.open(caminho_imagem)
@@ -35,7 +34,6 @@ def load_thrash():
     global photo_img
     photo_img = ImageTk.PhotoImage(resized_image)
     return diretorio_principal, photo_img
-
 
 lbl_food = generate_widget(Label, row=0, column=0, sticky="W", text="Hotkey Eat Food", font=("Roboto", 12))
 cbx_food = generate_widget(Combobox, row=0, column=1, values=HOTKEYS, state="readonly", font=("Roboto", 12), width=12)
@@ -57,8 +55,6 @@ def get_mana_position():
     messagebox.showinfo(title='Mana Result', message=f"X: {x} Y: {y} - RGB: {rgb}")
     lbl_mana_position.configure(text=f"({x},{y})")
     mana_position = [x,y]
-
-
 
 btn_mana_position = generate_widget(Button, row=2, column=0, text="Mana Position",command=get_mana_position)
 lbl_mana_position = generate_widget(Label, row=2, column=1, text="Empty", font=("Roboto", 12), sticky="W")
@@ -111,25 +107,45 @@ def load():
 btn_load = generate_widget(Button,row=4,column=0,text="Load",command=load)
 
 def run():
-    pass
+    wait_to_eat_food = 10
+    time_food = time.time()
+    while not myEvent.is_set():
+        if 'mana_pos' in data and data['mana_pos']['position'] is not None:
+            x = data['mana_pos']['position'][0]
+            y = data['mana_pos']['position'][1]
+            if pyautogui.pixelMatchesColor(x, y, tuple(data['mana_pos']['rgb'])):
+                if data['spell']['value'] != 'Desligado':
+                    pyautogui.press(data['spell']['value'])
+            if data['food']['value'] != 'Desligado':
+                if int(time.time() - time_food) >= wait_to_eat_food:
+                    print('comendo food')
+                    pyautogui.press(data['food']['value'])
+                    time_food = time.time()
+    print('bot parado')
 
 def key_code(key):
     if key == pynput.keyboard.Key.esc:
         myEvent.set()
+        root.deiconify()
         return False
 
+def listener_keyboard():
+    with pynput.keyboard.Listener(on_press=key_code, on_release=key_code) as listener:
+        listener.join()
+    
 def start():
     global data
+    root.iconify()
+    save()
     data = load()
     global myEvent
     myEvent = threading.Event()
     global start_th
     start_th = threading.Thread(target=run)
-    with pynput.keyboard.Listener(on_press=key_code) as listener:
-        listener.join()
-    
+    keyboard_th = threading.Thread(target=listener_keyboard)
+    keyboard_th.start()
+
 
 btn_start = generate_widget(Button,row=4,column=1,text="Start",command=start)
-
 
 root.mainloop()
