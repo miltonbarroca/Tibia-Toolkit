@@ -5,6 +5,7 @@ from PIL import Image, ImageTk
 import os
 import keyboard
 import pyautogui
+from conf.window import hidden_client
 
 
 HOTKEYS = ['off', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12']
@@ -14,6 +15,8 @@ root.title("MyInterface")
 root.resizable(False, False)
 style = Style()
 style.configure('TButton', font=("Roboto", 12))
+style.configure('Ativado.TButton', foreground="green")
+style.configure('Desativado.TButton', foreground="red")
 
 def generate_widget(widget, row, column, sticky="NSEW", columnspan=None, **kwargs):
     my_widget = widget(**kwargs)
@@ -59,7 +62,16 @@ def clear():
 
 btn_mana_position_trash = generate_widget(Button, row=2, column=1, image=photo_img, sticky="E",command=clear)
 
-btn_opacity = generate_widget(Button, row=3, column=0, text="Aplly Opacity", columnspan=2)
+
+def opacity():
+    result = hidden_client()
+    if result == 1:
+        btn_opacity.configure(style='Ativado.TButton')
+        return
+    btn_opacity.configure(style='Desativado.TButton')
+
+btn_opacity = generate_widget(Button, row=3, column=0, text="Apply Opacity", columnspan=2, command=opacity)
+
 
 btn_load = generate_widget(Button,row=4,column=0,text="Load")
 btn_start = generate_widget(Button,row=4,column=1,text="Start")
