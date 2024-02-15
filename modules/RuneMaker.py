@@ -116,8 +116,14 @@ def run():
 
 def key_code(key):
     if key == pynput.keyboard.Key.esc:
-        myEvent.set
+        print('pausado')
+        myEvent.set()
         return False
+
+
+def listener_keyboard():
+    with pynput.keyboard.Listener(on_press=key_code) as listener:
+        listener.join()
 
 def start():
     global data
@@ -127,9 +133,10 @@ def start():
     global start_th
     start_th = threading.Thread(target=run)
     start_th.start()
+    keyboard_th = threading.Thread(target=listener_keyboard)
+    keyboard_th.start()
 
-    with pynput.keyboard.Listener(on_press=key_code) as listener:
-        listener.join()
+
 
         
 btn_start = generate_widget(Button,row=4,column=1,text="Start",command=start)
