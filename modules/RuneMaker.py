@@ -16,6 +16,7 @@ HOTKEYS = ['off', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', '
 
 root = ThemedTk(theme="black", themebg=True)
 root.title("MyInterface")
+root.geometry("500x500+300+300")
 root.resizable(False, False)
 style = Style()
 style.configure('TButton', font=("Roboto", 12))
@@ -36,12 +37,22 @@ def load_thrash():
     photo_img = ImageTk.PhotoImage(resized_image)
     return diretorio_principal, photo_img
 
-lbl_food = generate_widget(Label, row=0, column=0, sticky="W", text="Hotkey Eat Food", font=("Roboto", 12))
-cbx_food = generate_widget(Combobox, row=0, column=1, values=HOTKEYS, state="readonly", font=("Roboto", 12), width=12)
+#next_row = 5  # Adjust this based on the last row you have used
+
+lbl_soft_boots = generate_widget(Label, row=0, column=0, sticky="W", text="Hotkey Soft Boots", font=("Roboto", 12))
+cbx_soft_boots = generate_widget(Combobox, row=0, column=1, values=HOTKEYS, state="readonly", font=("Roboto", 12), width=12)
+cbx_soft_boots.current(0)
+
+lbl_ring = generate_widget(Label, row=1, column=0, sticky="W", text="Hotkey Ring", font=("Roboto", 12))
+cbx_ring = generate_widget(Combobox, row=1, column=1, values=HOTKEYS, state="readonly", font=("Roboto", 12), width=12)
+cbx_ring.current(0)
+
+lbl_food = generate_widget(Label, row=2, column=0, sticky="W", text="Hotkey Eat Food", font=("Roboto", 12))
+cbx_food = generate_widget(Combobox, row=2, column=1, values=HOTKEYS, state="readonly", font=("Roboto", 12), width=12)
 cbx_food.current(0)
 
-lbl_cast = generate_widget(Label, row=1, column=0, sticky="W", text="Hotkey Cast Spell", font=("Roboto", 12))
-cbx_cast = generate_widget(Combobox, row=1, column=1, values=HOTKEYS, state="readonly", font=("Roboto", 12), width=12)
+lbl_cast = generate_widget(Label, row=3, column=0, sticky="W", text="Hotkey Cast Spell", font=("Roboto", 12))
+cbx_cast = generate_widget(Combobox, row=3, column=1, values=HOTKEYS, state="readonly", font=("Roboto", 12), width=12)
 cbx_cast.current(0)
 rgb = ''
 mana_position = ''
@@ -57,15 +68,15 @@ def get_mana_position():
     lbl_mana_position.configure(text=f"({x},{y})")
     mana_position = [x,y]
 
-btn_mana_position = generate_widget(Button, row=2, column=0, text="Mana Position",command=get_mana_position)
-lbl_mana_position = generate_widget(Label, row=2, column=1, text="Empty", font=("Roboto", 12), sticky="W")
+btn_mana_position = generate_widget(Button, row=4, column=0, text="Mana Position",command=get_mana_position)
+lbl_mana_position = generate_widget(Label, row=4, column=1, text="Empty", font=("Roboto", 12), sticky="W")
 
 trash_dir, trash_img = load_thrash()  
 
 def clear():
     lbl_mana_position.configure(text="Empty")
 
-btn_mana_position_trash = generate_widget(Button, row=2, column=1, image=photo_img, sticky="E",command=clear)
+btn_mana_position_trash = generate_widget(Button, row=4, column=1, image=photo_img, sticky="E",command=clear)
 
 
 def opacity():
@@ -75,7 +86,7 @@ def opacity():
         return
     btn_opacity.configure(style='Desativado.TButton')
 
-btn_opacity = generate_widget(Button, row=3, column=0, text="Apply Opacity", columnspan=2, command=opacity)
+btn_opacity = generate_widget(Button, row=5, column=0, text="Apply Opacity", columnspan=2, command=opacity)
 
 def save():
     print('Salvando Configurações')
@@ -105,7 +116,7 @@ def load():
     lbl_mana_position.configure(text=data['mana_pos']['position'])
     return data
 
-btn_load = generate_widget(Button,row=4,column=0,text="Load",command=load)
+btn_load = generate_widget(Button,row=6,column=0,text="Load",command=load)
 
 def run():
     wait_to_eat_food = 40
@@ -155,7 +166,7 @@ def start():
 
 
         
-btn_start = generate_widget(Button,row=4,column=1,text="Start",command=start)
+btn_start = generate_widget(Button,row=6,column=1,text="Start",command=start)
 
 
 
