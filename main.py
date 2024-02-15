@@ -1,4 +1,4 @@
-# main.py
+
 import threading
 import keyboard
 from modules.AutoCombo import auto_combo, pause, set_finalizar_programa

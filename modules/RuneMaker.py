@@ -99,14 +99,23 @@ def save():
             "value": cbx_cast.get(),
             "position": cbx_cast.current()
         },
-        "mana_pos":{
+        "soft_boots": {
+            "value": cbx_soft_boots.get(),
+            "position": cbx_soft_boots.current()
+        },
+        "ring": {
+            "value": cbx_ring.get(),
+            "position": cbx_ring.current()
+        },
+        "mana_pos": {
             "position": mana_position,
             "rgb": rgb
         }
     }
 
-    with open('infos.json','w') as file:
+    with open('infos.json', 'w') as file:
         file.write(json.dumps(my_data))
+
 
 def load():
     with open('infos.json', 'r') as file:
@@ -118,24 +127,67 @@ def load():
 
 btn_load = generate_widget(Button,row=6,column=0,text="Load",command=load)
 
+#def are_soft_boots_equipped():
+#    soft_boots_location = pyautogui.locateOnScreen('img/soft_boots.png', confidence=0.7)
+    
+#    if soft_boots_location is not None:
+#        return True
+#    else:
+#        # Se a imagem não foi encontrada, pressiona a tecla designada
+#        print('Soft Boots not found, pressing the designated key')
+#        pyautogui.press(data['soft_boots']['value'])
+#        return False
+
 def run():
     wait_to_eat_food = 40
+    check_soft_boots_interval = 10
+    soft_boots_last_check_time = time.time()
+    soft_boots_last_check_time = 5
+    check_soft_boots_interval = 5
+    soft_boots_pressed = False
     time_food = time.time()
+
     while not myEvent.is_set():
         if data['mana_pos']['position'] is not None:
             x = data['mana_pos']['position'][0]
             y = data['mana_pos']['position'][1]
+
             if pyautogui.pixelMatchesColor(x, y, tuple(data['mana_pos']['rgb'])):
                 if data['spell']['value'] != 'off':
                     # Adiciona um atraso aleatório entre 0.5 e 1.5 segundos
                     delay = random.uniform(0.5, 1.5)
                     time.sleep(delay)
                     pyautogui.press(data['spell']['value'])
+                if data['soft_boots']['value'] != 'off' and int(time.time() - soft_boots_last_check_time) >= check_soft_boots_interval:
+                    print('Verificando Soft Boots')
+
+                    try:
+                        soft_boots_location = pyautogui.locateOnScreen('img/soft_boots.png', confidence=0.9, region=(1821, 251, 32, 32))
+                        if soft_boots_location is not None:
+                            # Se os soft boots ainda não foram pressionados
+                            if not soft_boots_pressed:
+                                # Pressiona a tecla correspondente
+                                pyautogui.press(data['soft_boots']['value'])
+                                soft_boots_pressed = True  # Atualiza a variável para indicar que a tecla foi pressionada
+
+                            # Restante do código quando a imagem é encontrada
+                            print('Soft Boots encontrada!')
+                        else:
+                            raise pyautogui.ImageNotFoundException('Imagem não encontrada.')
+
+                    except pyautogui.ImageNotFoundException:
+                        # Trata a exceção quando a imagem não é encontrada
+                        print('Equipando Soft boots')
+                        pyautogui.press(data['soft_boots']['value'])
+
                 if data['food']['value'] != 'off':
                     if int(time.time() - time_food) >= wait_to_eat_food:
                         print('comendo food')
                         pyautogui.press(data['food']['value'])
                         time_food = time.time()
+
+        time.sleep(1)  # Adicionar um pequeno atraso para evitar um loop muito rápido
+
     print('RuneMaker Stop')
 
 
