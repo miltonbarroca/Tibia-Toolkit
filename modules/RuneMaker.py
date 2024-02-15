@@ -77,7 +77,7 @@ def opacity():
 btn_opacity = generate_widget(Button, row=3, column=0, text="Apply Opacity", columnspan=2, command=opacity)
 
 def save():
-    print('Salvando Arquivos')
+    print('Salvando Configurações')
     my_data = {
         "food": {
             "value": cbx_food.get(),
@@ -95,6 +95,8 @@ def save():
 
     with open('infos.json','w') as file:
         file.write(json.dumps(my_data))
+
+btn_start = generate_widget(Button,row=4,column=1,text="Start",command=save)
 
 def load():
     with open('infos.json', 'r') as file:
@@ -146,6 +148,6 @@ def start():
     keyboard_th.start()
 
 
-btn_start = generate_widget(Button,row=4,column=1,text="Start",command=start)
+
 
 root.mainloop()
