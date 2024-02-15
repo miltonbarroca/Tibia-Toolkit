@@ -117,6 +117,7 @@ def run():
 def key_code(key):
     if key == pynput.keyboard.Key.esc:
         print('pausado')
+        root.deiconify()
         myEvent.set()
         return False
 
@@ -126,6 +127,7 @@ def listener_keyboard():
         listener.join()
 
 def start():
+    root.iconify()
     global data
     data = load()
     global myEvent
