@@ -10,6 +10,7 @@ import json
 import threading
 import pynput
 import time
+import random
 
 HOTKEYS = ['off', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12']
 
@@ -96,8 +97,6 @@ def save():
     with open('infos.json','w') as file:
         file.write(json.dumps(my_data))
 
-
-
 def load():
     with open('infos.json', 'r') as file:
         data = json.loads(file.read())
@@ -109,14 +108,28 @@ def load():
 btn_load = generate_widget(Button,row=4,column=0,text="Load",command=load)
 
 def run():
- 
+    wait_to_eat_food = 40
+    time_food = time.time()
     while not myEvent.is_set():
-        print(myEvent.is_set())
+        if data['mana_pos']['position'] is not None:
+            x = data['mana_pos']['position'][0]
+            y = data['mana_pos']['position'][1]
+            if pyautogui.pixelMatchesColor(x, y, tuple(data['mana_pos']['rgb'])):
+                if data['spell']['value'] != 'off':
+                    # Adiciona um atraso aleatório entre 0.5 e 1.5 segundos
+                    delay = random.uniform(0.5, 1.5)
+                    time.sleep(delay)
+                    pyautogui.press(data['spell']['value'])
+                if data['food']['value'] != 'off':
+                    if int(time.time() - time_food) >= wait_to_eat_food:
+                        print('comendo food')
+                        pyautogui.press(data['food']['value'])
+                        time_food = time.time()
+    print('RuneMaker Stop')
 
 
 def key_code(key):
     if key == pynput.keyboard.Key.esc:
-        print('pausado')
         root.deiconify()
         myEvent.set()
         return False
@@ -128,6 +141,7 @@ def listener_keyboard():
 
 def start():
     root.iconify()
+    save()
     global data
     data = load()
     global myEvent
