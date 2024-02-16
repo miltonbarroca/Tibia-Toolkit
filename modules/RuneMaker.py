@@ -37,8 +37,6 @@ def load_thrash():
     photo_img = ImageTk.PhotoImage(resized_image)
     return diretorio_principal, photo_img
 
-#next_row = 5  # Adjust this based on the last row you have used
-
 lbl_soft_boots = generate_widget(Label, row=0, column=0, sticky="W", text="Hotkey Soft Boots", font=("Roboto", 12))
 cbx_soft_boots = generate_widget(Combobox, row=0, column=1, values=HOTKEYS, state="readonly", font=("Roboto", 12), width=12)
 cbx_soft_boots.current(0)
@@ -188,8 +186,6 @@ def start():
     start_th.start()
     keyboard_th = threading.Thread(target=listener_keyboard)
     keyboard_th.start()
-
-
 
         
 btn_start = generate_widget(Button,row=6,column=1,text="Start",command=start)
