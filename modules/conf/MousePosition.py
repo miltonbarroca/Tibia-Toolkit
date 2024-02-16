@@ -4,12 +4,11 @@ import keyboard
 def on_insert_pressed(e):
     if e.name == 'insert':
         x, y = pyautogui.position()
-        print(f"Coordenadas do mouse: ({x}, {y})")
+        rgb = pyautogui.pixel(x, y)
+        print(f"Coordenadas do mouse: ({x}, {y}), RGB: {rgb}")
 
-print("Pressione Insert para obter as coordenadas do mouse...")
+print("Pressione Insert para obter as coordenadas e a cor RGB do mouse...")
 
-# Adiciona o manipulador de eventos para a tecla Insert
 keyboard.hook(on_insert_pressed)
+keyboard.wait('esc')
 
-# Mantém o programa em execução
-keyboard.wait('esc')  # Aguarda até que a tecla Escape seja pressionada
