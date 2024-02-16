@@ -122,29 +122,15 @@ def load():
         data = json.loads(file.read())
     cbx_food.current(data['food']['position'])
     cbx_cast.current(data['spell']['position'])
+    cbx_ring.current(data['ring']['position'])
+    cbx_soft_boots.current(data['soft_boots']['position'])
     lbl_mana_position.configure(text=data['mana_pos']['position'])
     return data
 
 btn_load = generate_widget(Button,row=6,column=0,text="Load",command=load)
 
-#def are_soft_boots_equipped():
-#    soft_boots_location = pyautogui.locateOnScreen('img/soft_boots.png', confidence=0.7)
-    
-#    if soft_boots_location is not None:
-#        return True
-#    else:
-#        # Se a imagem não foi encontrada, pressiona a tecla designada
-#        print('Soft Boots not found, pressing the designated key')
-#        pyautogui.press(data['soft_boots']['value'])
-#        return False
-
 def run():
     wait_to_eat_food = 40
-    check_soft_boots_interval = 10
-    soft_boots_last_check_time = time.time()
-    soft_boots_last_check_time = 5
-    check_soft_boots_interval = 5
-    soft_boots_pressed = False
     time_food = time.time()
 
     while not myEvent.is_set():
@@ -176,11 +162,6 @@ def run():
                     print('Equipando ring')
                     time.sleep(delay)
                     pyautogui.press(data['ring']['value'])
-
-
-
-        time.sleep(1)  # Adicionar um pequeno atraso para evitar um loop muito rápido
-
     print('RuneMaker Stop')
 
 
