@@ -1,4 +1,3 @@
-import threading
 import pyautogui as pg
 import time
 import keyboard
