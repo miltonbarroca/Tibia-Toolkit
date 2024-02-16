@@ -16,7 +16,7 @@ HOTKEYS = ['off', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', '
 
 root = ThemedTk(theme="black", themebg=True)
 root.title("MyInterface")
-root.geometry("500x500+300+300")
+#root.geometry("500x500+300+300")
 root.resizable(False, False)
 style = Style()
 style.configure('TButton', font=("Roboto", 12))
