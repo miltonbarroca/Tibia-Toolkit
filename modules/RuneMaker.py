@@ -154,37 +154,30 @@ def run():
 
             if pyautogui.pixelMatchesColor(x, y, tuple(data['mana_pos']['rgb'])):
                 if data['spell']['value'] != 'off':
-                    # Adiciona um atraso aleatório entre 0.5 e 1.5 segundos
                     delay = random.uniform(0.5, 1.5)
                     time.sleep(delay)
                     pyautogui.press(data['spell']['value'])
-                if data['soft_boots']['value'] != 'off' and int(time.time() - soft_boots_last_check_time) >= check_soft_boots_interval:
-                    print('Verificando Soft Boots')
-
-                    try:
-                        soft_boots_location = pyautogui.locateOnScreen('img/soft_boots.png', confidence=0.9, region=(1821, 251, 32, 32))
-                        if soft_boots_location is not None:
-                            # Se os soft boots ainda não foram pressionados
-                            if not soft_boots_pressed:
-                                # Pressiona a tecla correspondente
-                                pyautogui.press(data['soft_boots']['value'])
-                                soft_boots_pressed = True  # Atualiza a variável para indicar que a tecla foi pressionada
-
-                            # Restante do código quando a imagem é encontrada
-                            print('Soft Boots encontrada!')
-                        else:
-                            raise pyautogui.ImageNotFoundException('Imagem não encontrada.')
-
-                    except pyautogui.ImageNotFoundException:
-                        # Trata a exceção quando a imagem não é encontrada
-                        print('Equipando Soft boots')
-                        pyautogui.press(data['soft_boots']['value'])
 
                 if data['food']['value'] != 'off':
                     if int(time.time() - time_food) >= wait_to_eat_food:
                         print('comendo food')
                         pyautogui.press(data['food']['value'])
                         time_food = time.time()
+
+                if data['soft_boots']['value'] != 'off':
+                    delay = random.uniform(0.5, 2)
+                    time.sleep(delay)
+                    print('Equipando soft')
+                    pyautogui.press(data['soft_boots']['value'])
+
+
+                if data['ring']['value'] != 'off':
+                    delay = random.uniform(1.5, 2.5)
+                    print('Equipando ring')
+                    time.sleep(delay)
+                    pyautogui.press(data['ring']['value'])
+
+
 
         time.sleep(1)  # Adicionar um pequeno atraso para evitar um loop muito rápido
 

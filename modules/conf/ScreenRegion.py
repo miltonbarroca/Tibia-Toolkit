@@ -24,3 +24,4 @@ def get_corner_coordinates():
 
 # Chamada da função para obter as coordenadas da região
 x_region_start, y_region_start, region_width, region_height = get_corner_coordinates()
+
