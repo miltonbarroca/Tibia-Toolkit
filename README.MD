@@ -30,9 +30,9 @@ O Auto Combo permite que os Knights executem combos de magias automaticamente, o
 | CaveBot        | 🚧       |
 | AutoAmulet     | ❌       |
 | AutoRing       | ❌       |
-| FoodEater      | ❌       |
+| FoodEater      | ❌🚧     |
 | RuneMaker      | ✅🚧     |
-
+| SkillTrainer   | ❌       |
 ### Como Contribuir:
 
 Sinta-se à vontade para contribuir relatando problemas, propondo melhorias ou enviando solicitações de pull. Juntos, podemos tornar o Auto Combo uma ferramenta ainda mais poderosa e eficiente para os Knights no Tibia.
