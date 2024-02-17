@@ -39,6 +39,16 @@ def check_battle():
         print('Monstros encontrados')
         return True  
 
+def check_mana():
+    pixel_mana = (1851, 321)
+    cor = (66, 78, 106)
+
+    while pg.pixelMatchesColor(*pixel_mana,cor):
+        pg.press('3')
+        time.sleep(1)
+
+def check_life():
+     
 have_monster = True
 
 def run():
@@ -52,4 +62,3 @@ def run():
             print('Coletando loot')
         time.sleep(1)
 
-run()
