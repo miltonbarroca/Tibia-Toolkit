@@ -3,14 +3,14 @@ import keyboard
 import pyautogui as pg
 
 loot_coordinates = [
-    (2845, 451),
-    (2914, 450),
-    (2914, 450),
-    (2911, 516),
-    (2911, 589),
-    (2842, 589),
-    (2774, 589),
-    (2774, 441)
+    (2849, 478),
+    (2907, 479),
+    (2914, 545),
+    (2911, 613),
+    (2843, 613),
+    (2771, 607),
+    (2772, 539),
+    (2771, 477)
 ]
 
 def get_loot():
@@ -18,3 +18,5 @@ def get_loot():
     for coord in loot_coordinates:
         pg.click(x=coord[0], y=coord[1], button='right')
     keyboard.release('shift')
+
+get_loot()
