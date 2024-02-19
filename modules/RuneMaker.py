@@ -12,6 +12,7 @@ import pynput
 import time
 import random
 
+
 HOTKEYS = ['off', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12']
 
 root = ThemedTk(theme="black", themebg=True)
@@ -111,12 +112,12 @@ def save():
         }
     }
 
-    with open('infos.json', 'w') as file:
+    with open('modules/conf/infos.json', 'w') as file:
         file.write(json.dumps(my_data))
 
 
 def load():
-    with open('infos.json', 'r') as file:
+    with open('modules/conf/infos.json', 'r') as file:
         data = json.loads(file.read())
     cbx_food.current(data['food']['position'])
     cbx_cast.current(data['spell']['position'])

@@ -18,4 +18,4 @@ def check_life():
         pg.press('2')
         time.sleep(random.uniform(0.4, 0.6))  
         pg.press('1')  # hotkey de cura
-        time.sleep(random.uniform(0.8, 1.2))
+        time.sleep(random.uniform(0.8, 1.3))

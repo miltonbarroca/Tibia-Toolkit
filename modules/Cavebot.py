@@ -3,10 +3,11 @@ import time
 import threading
 import pyautogui as pg
 import time
-import keyboard
+import random
 from conf import Constants
 from GetLoot import get_loot
-import random
+from pynput import keyboard
+from CheckStatus import check_life, check_mana
 
 def exeta():
     for tecla in Constants.EXETA:
@@ -16,18 +17,15 @@ def utito():
     for tecla in Constants.UTITO:
         pg.press(tecla)
 
-def combo():
+def kill_box():
             pg.press('9')
-            time.sleep(random.uniform(2, 2.4))
-
+            time.sleep(random.uniform(2, 2.1))
             pg.press('8')
-            time.sleep(random.uniform(2, 2.4))
-
+            time.sleep(random.uniform(2, 2.7))
             pg.press('9')
             time.sleep(random.uniform(2, 2.4))
-
             pg.press('0')
-            time.sleep(random.uniform(2, 2.4))
+            time.sleep(random.uniform(2, 2.8))
 
 
 def check_battle():
@@ -37,19 +35,14 @@ def check_battle():
         return False 
     except pg.ImageNotFoundException:
         print('Monstros encontrados')
-        return True  
-
-
-have_monster = True
+        return True
 
 def run():
-    have_monster = check_battle()
-    while have_monster == True:
-        combo()
-        time.sleep(random.uniform(0.1, 0.9))
-        get_loot()
-        print('Coletando loot')
-        time.sleep(1)
+        while True:
+            if check_battle() == True:
+                kill_box()
+            get_loot()
+            print('Coletando loot')
+            time.sleep(1)
 
-keyboard.wait('h')
 run()
