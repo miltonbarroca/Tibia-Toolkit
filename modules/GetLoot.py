@@ -18,5 +18,3 @@ def get_loot():
     for coord in loot_coordinates:
         pg.click(x=coord[0], y=coord[1], button='right')
     keyboard.release('shift')
-
-get_loot()

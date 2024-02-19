@@ -43,13 +43,13 @@ def check_battle():
 have_monster = True
 
 def run():
-    global have_monster
-    while have_monster:
-        have_monster = check_battle()
-        if have_monster:
-            combo()
-            time.sleep(1)
-            get_loot()
-            print('Coletando loot')
+    have_monster = check_battle()
+    while have_monster == True:
+        combo()
+        time.sleep(random.uniform(0.1, 0.9))
+        get_loot()
+        print('Coletando loot')
         time.sleep(1)
 
+keyboard.wait('h')
+run()
