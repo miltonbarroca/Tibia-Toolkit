@@ -1,0 +1,68 @@
+[
+    {
+        "path": "modules/Feyrist/flag_0.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 10
+    },
+    {
+        "path": "modules/Feyrist/flag_1.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 10
+    },
+    {
+        "path": "modules/Feyrist/flag_2.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 10
+    },
+    {
+        "path": "modules/Feyrist/flag_3.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 10
+    },
+    {
+        "path": "modules/Feyrist/flag_4.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 10
+    },
+    {
+        "path": "modules/Feyrist/flag_5.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 10
+    },
+    {
+        "path": "modules/Feyrist/flag_6.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 10
+    },
+    {
+        "path": "modules/Feyrist/flag_7.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 10
+    },
+    {
+        "path": "modules/Feyrist/flag_8.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 10
+    },
+    {
+        "path": "modules/Feyrist/flag_9.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 10
+    },
+    {
+        "path": "modules/Feyrist/flag_10.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 10
+    }
+]

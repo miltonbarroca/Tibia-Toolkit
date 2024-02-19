@@ -3,11 +3,20 @@ from pynput.keyboard import Listener
 from pynput import keyboard
 import json
 import os
-import constants
+from conf import Constants
+
 
 def create_folder():
-    if not os.path.isdir(constants.FOLDER_NAMEFOLDER_NAME):
-        os.mkdir(constants.FOLDER_NAME)
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+
+    folder_path = os.path.join(current_directory, Constants.FOLDER_NAME)
+    
+    if not os.path.isdir(folder_path):
+        os.mkdir(folder_path)
+        print(f'Diretório {Constants.FOLDER_NAME} criado em {current_directory}')
+    else:
+        print(f'O diretório {Constants.FOLDER_NAME} já existe em {current_directory}')
+
 
 
 class Rec:
@@ -19,7 +28,7 @@ class Rec:
     def photo(self):
         x, y = pg.position()
         photo = pg.screenshot(region=(x - 3,y - 3, 6, 6))
-        path = f'{constants.FOLDER_NAME}/flag_{self.count}.png'
+        path = f'modules/{Constants.FOLDER_NAME}/flag_{self.count}.png'
         photo.save(path)
         self.count = self.count + 1
         infos = {
@@ -40,7 +49,7 @@ class Rec:
 
     def key_code(self,key):
         if key == keyboard.Key.esc:
-            with open(f'{constants.FOLDER_NAME}/infos.json', 'w') as file:
+            with open(f'modules/{Constants.FOLDER_NAME}/infos.json', 'w') as file:
                 file.write(json.dumps(self.coordinates))
             return False
         if key == keyboard.Key.insert:
