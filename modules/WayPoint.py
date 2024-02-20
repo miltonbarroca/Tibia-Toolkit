@@ -35,7 +35,8 @@ class Rec:
             "path": path,
             "down_hole": 0,
             "up_hole": 0,
-            "wait": 10
+            "wait": 10,
+            "position": (x,y)
         }
         self.coordinates.append(infos)
 

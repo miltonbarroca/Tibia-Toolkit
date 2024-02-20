@@ -39,11 +39,14 @@ def check_battle():
         print('Monstros encontrados')
         return True
 
-def next_box(path, wait):
-    flag = pg.locateOnScreen(path,confidence=0.8, region=Constants.MINIMAP)
-    x,y = pg.center(flag)
-    pg.moveTo(x,y)
-    pg.click(wait)
+def next_box(path,wait, position):
+    # Converte a string "(3750, 166)" para uma tupla (3750, 166)
+    position = eval(position)
+    
+    # Move o mouse para a posição especificada
+    pg.moveTo(position[0], position[1])
+    pg.sleep(wait)
+    pg.click()
     
 def check_payer():
     try:
@@ -63,12 +66,12 @@ def run():
             pg.sleep(1)
             get_loot()
             print('Coletando loot')
-        next_box(item['path'], item['wait'])
+        next_box(item['path'], item['wait'], item['position'])
         if check_payer() == False:
             kill_box()
             pg.sleep(1)
             get_loot()
-            next_box(item['path'], item['wait'])
+            next_box(item['path'], item['wait'], item['position'])
 
 
 run()
