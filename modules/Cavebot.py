@@ -121,9 +121,9 @@ global event_th
 event_th = threading.Event()
 th_run = threading.Thread(target=run)
 
-th_check_mana = my_thread.MyThread(lambda : CheckStatus.check_status('mana',1,*Constants.PIXEL_MANA,Constants.COR_MANA,'3'))
-th_check_life = my_thread.MyThread(lambda : CheckStatus.check_status('life',2,*Constants.PIXEL_LIFE,Constants.COR_LIFE,'1'))
-th_check_exura = my_thread.MyThread(lambda : CheckStatus.check_status('exura',1,*Constants.PIXEL_EXURA,Constants.COR_EXURA,'2'))
+th_check_mana = my_thread.MyThread(lambda: CheckStatus.check_status('mana', random.uniform(1, 1.7), *Constants.PIXEL_MANA, Constants.COR_MANA, ['3']))
+th_check_life = my_thread.MyThread(lambda : CheckStatus.check_status('life',random.uniform(1, 1.8),*Constants.PIXEL_LIFE,Constants.COR_LIFE,'1'))
+th_check_exura = my_thread.MyThread(lambda : CheckStatus.check_status('exura',random.uniform(1, 1.2),*Constants.PIXEL_EXURA,Constants.COR_EXURA,'2'))
 
 group_threads = my_thread.ThreadGroup([th_check_mana,th_check_life,th_check_exura])
 
