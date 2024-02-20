@@ -5,10 +5,12 @@ import pyautogui as pg
 import time
 import random
 import json
+import my_thread
+import CheckStatus
 from conf import Constants
 from GetLoot import get_loot
 from pynput import keyboard
-from CheckStatus import check_life, check_mana
+from pynput.keyboard import Listener
 
 
 def exeta():
@@ -20,14 +22,24 @@ def utito():
         pg.press(tecla)
 
 def kill_box():
+            if event_th.is_set():
+                return
             pg.press('9')
             time.sleep(random.uniform(2, 2.1))
+            if event_th.is_set():
+                return
             pg.press('8')
             time.sleep(random.uniform(2, 2.7))
+            if event_th.is_set():
+                return            
             pg.press('9')
             time.sleep(random.uniform(2, 2.4))
+            if event_th.is_set():
+                return
             pg.press('0')
             time.sleep(random.uniform(2, 2.8))
+            if event_th.is_set():
+                return
 
 
 def check_battle():
@@ -40,13 +52,14 @@ def check_battle():
         return True
 
 def next_box(path,wait, position):
-    # Converte a string "(3750, 166)" para uma tupla (3750, 166)
-    position = eval(position)
-    
-    # Move o mouse para a posição especificada
-    pg.moveTo(position[0], position[1])
-    pg.sleep(wait)
-    pg.click()
+    flag = pg.locateOnScreen(path, confidence= 0.8,region=Constants.MINIMAP)
+    if flag:
+        position = eval(position)
+        if event_th.is_set():
+            return
+        pg.moveTo(position[0], position[1])
+        pg.click()
+        pg.sleep(wait)
     
 def check_payer():
     try:
@@ -57,21 +70,50 @@ def check_payer():
         return True
 
 def run():
+    event_th.is_set()
     with open(f'modules/{Constants.FOLDER_NAME}/infos.json', 'r') as file:
         data = json.loads(file.read())
     for item in data:
+        if event_th.is_set():
+            return
         while check_battle() == True:
             print('matando box...')
             kill_box()
+            if event_th.is_set():
+                return
             pg.sleep(1)
             get_loot()
+            if event_th.is_set():
+                return
             print('Coletando loot')
         next_box(item['path'], item['wait'], item['position'])
+        if event_th.is_set():
+            return
         if check_payer() == False:
             kill_box()
+            if event_th.is_set():
+                return
             pg.sleep(1)
             get_loot()
+            if event_th.is_set():
+                return
             next_box(item['path'], item['wait'], item['position'])
+            if event_th.is_set():
+                return
 
 
-run()
+def key_code(key):
+    if key == keyboard.Key.esc:
+        event_th.set()
+        return False
+    if key == keyboard.Key.delete:
+        th_run.start()
+
+global event_th
+event_th = threading.Event()
+th_run = threading.Thread(target=run)
+
+th_full_mana = my_thread.MyThread(lambda : CheckStatus.check_mana('mana',1,))
+
+with Listener(on_press=key_code) as listener :
+    listener.join()
