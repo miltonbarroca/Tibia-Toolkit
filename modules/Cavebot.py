@@ -22,25 +22,29 @@ def utito():
         pg.press(tecla)
 
 def kill_box():
-        while check_battle() == True:
-            if event_th.is_set():
-                return
-            pg.press('9')
-            time.sleep(random.uniform(2, 2.1))
-            if event_th.is_set():
-                return
-            pg.press('8')
-            time.sleep(random.uniform(2, 2.7))
-            if event_th.is_set():
-                return            
-            pg.press('9')
-            time.sleep(random.uniform(2, 2.4))
-            if event_th.is_set():
-                return
-            pg.press('0')
-            time.sleep(random.uniform(2, 2.8))
-            if event_th.is_set():
-                return
+    while check_battle():
+        if event_th.is_set():
+            return
+
+        pg.press('9')
+        if not check_battle() or event_th.is_set():
+            return
+        time.sleep(random.uniform(2, 2.1))
+
+        pg.press('8')
+        if not check_battle() or event_th.is_set():
+            return
+        time.sleep(random.uniform(2, 2.7))
+
+        pg.press('9')
+        if not check_battle() or event_th.is_set():
+            return
+        time.sleep(random.uniform(2, 2.4))
+
+        pg.press('0')
+        if not check_battle() or event_th.is_set():
+            return
+        time.sleep(random.uniform(2, 2.8))
 
 
 def check_battle():
@@ -62,7 +66,7 @@ def next_box(path,wait, position):
         pg.click()
         pg.sleep(wait)
     
-def check_payer():
+def check_player():
     try:
         pg.locateOnScreen('img/player.png', confidence=0.9, region=Constants.MINIMAP)
         print('player encontrado')
@@ -91,7 +95,7 @@ def run():
             next_box(item['path'], item['wait'], item['position'])
             if event_th.is_set():
                 return
-            if check_payer() == False:
+            if check_player() == False:
                 kill_box()
                 if event_th.is_set():
                     return
@@ -119,8 +123,9 @@ th_run = threading.Thread(target=run)
 
 th_check_mana = my_thread.MyThread(lambda : CheckStatus.check_status('mana',1,*Constants.PIXEL_MANA,Constants.COR_MANA,'3'))
 th_check_life = my_thread.MyThread(lambda : CheckStatus.check_status('life',2,*Constants.PIXEL_LIFE,Constants.COR_LIFE,'1'))
+th_check_exura = my_thread.MyThread(lambda : CheckStatus.check_status('exura',1,*Constants.PIXEL_EXURA,Constants.COR_EXURA,'2'))
 
-group_threads = my_thread.ThreadGroup([th_check_mana,th_check_life])
+group_threads = my_thread.ThreadGroup([th_check_mana,th_check_life,th_check_exura])
 
 with Listener(on_press=lambda key: key_code(key, group_threads)) as listener :
     listener.join()
