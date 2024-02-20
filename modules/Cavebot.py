@@ -22,6 +22,7 @@ def utito():
         pg.press(tecla)
 
 def kill_box():
+        while check_battle() == True:
             if event_th.is_set():
                 return
             pg.press('9')
@@ -73,47 +74,53 @@ def run():
     event_th.is_set()
     with open(f'modules/{Constants.FOLDER_NAME}/infos.json', 'r') as file:
         data = json.loads(file.read())
-    for item in data:
-        if event_th.is_set():
-            return
-        while check_battle() == True:
-            print('matando box...')
-            kill_box()
+    while not event_th.is_set():
+        for item in data:
             if event_th.is_set():
                 return
-            pg.sleep(1)
-            get_loot()
-            if event_th.is_set():
-                return
-            print('Coletando loot')
-        next_box(item['path'], item['wait'], item['position'])
-        if event_th.is_set():
-            return
-        if check_payer() == False:
-            kill_box()
-            if event_th.is_set():
-                return
-            pg.sleep(1)
-            get_loot()
-            if event_th.is_set():
-                return
+            while check_battle() == True:
+                print('matando box...')
+                kill_box()
+                if event_th.is_set():
+                    return
+                pg.sleep(1)
+                get_loot()
+                if event_th.is_set():
+                    return
+                print('Coletando loot')
             next_box(item['path'], item['wait'], item['position'])
             if event_th.is_set():
                 return
+            if check_payer() == False:
+                kill_box()
+                if event_th.is_set():
+                    return
+                pg.sleep(1)
+                get_loot()
+                if event_th.is_set():
+                    return
+                next_box(item['path'], item['wait'], item['position'])
+                if event_th.is_set():
+                    return
 
 
-def key_code(key):
+def key_code(key,th_group):
     if key == keyboard.Key.esc:
         event_th.set()
+        th_group.stop()
         return False
     if key == keyboard.Key.delete:
+        th_group.start()
         th_run.start()
 
 global event_th
 event_th = threading.Event()
 th_run = threading.Thread(target=run)
 
-th_full_mana = my_thread.MyThread(lambda : CheckStatus.check_mana('mana',1,))
+th_check_mana = my_thread.MyThread(lambda : CheckStatus.check_status('mana',1,*Constants.PIXEL_MANA,Constants.COR_MANA,'3'))
+th_check_life = my_thread.MyThread(lambda : CheckStatus.check_status('life',2,*Constants.PIXEL_LIFE,Constants.COR_LIFE,'1'))
 
-with Listener(on_press=key_code) as listener :
+group_threads = my_thread.ThreadGroup([th_check_mana,th_check_life])
+
+with Listener(on_press=lambda key: key_code(key, group_threads)) as listener :
     listener.join()

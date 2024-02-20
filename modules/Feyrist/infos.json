@@ -4,7 +4,7 @@
         "down_hole": 0,
         "up_hole": 0,
         "wait": 10,
-        "position": "(3722, 193)"
+        "position": "(3774, 183)"
     },
     {
         "path": "modules/Feyrist/flag_1.png",
@@ -18,14 +18,14 @@
         "down_hole": 0,
         "up_hole": 0,
         "wait": 10,
-        "position": "(3732, 196)"
+        "position": "(3723, 198)"
     },
     {
         "path": "modules/Feyrist/flag_3.png",
         "down_hole": 0,
         "up_hole": 0,
         "wait": 10,
-        "position": "(3701, 180)"
+        "position": "(3709, 176)"
     },
     {
         "path": "modules/Feyrist/flag_4.png",
