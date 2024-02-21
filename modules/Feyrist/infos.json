@@ -4,70 +4,62 @@
         "down_hole": 0,
         "up_hole": 0,
         "wait": 10,
-        "position": "(3774, 183)"
+        "position": "3777, 178"
     },
     {
         "path": "modules/Feyrist/flag_1.png",
         "down_hole": 0,
         "up_hole": 0,
         "wait": 10,
-        "position": "(3722, 195)"
+        "position": "3716, 199"
     },
     {
         "path": "modules/Feyrist/flag_2.png",
         "down_hole": 0,
         "up_hole": 0,
         "wait": 10,
-        "position": "(3723, 198)"
+        "position": "3731, 193"
     },
     {
         "path": "modules/Feyrist/flag_3.png",
         "down_hole": 0,
         "up_hole": 0,
         "wait": 10,
-        "position": "(3709, 176)"
+        "position": "3708, 173"
     },
     {
         "path": "modules/Feyrist/flag_4.png",
         "down_hole": 0,
         "up_hole": 0,
         "wait": 10,
-        "position": "(3712, 179)"
+        "position": "3702, 183"
     },
     {
         "path": "modules/Feyrist/flag_5.png",
         "down_hole": 0,
         "up_hole": 0,
         "wait": 10,
-        "position": "(3706, 177)"
+        "position": "3729, 159"
     },
     {
         "path": "modules/Feyrist/flag_6.png",
         "down_hole": 0,
         "up_hole": 0,
         "wait": 10,
-        "position": "(3745, 161)"
+        "position": "3741, 174"
     },
     {
         "path": "modules/Feyrist/flag_7.png",
         "down_hole": 0,
         "up_hole": 0,
         "wait": 10,
-        "position": "(3742, 180)"
+        "position": "3721, 161"
     },
     {
         "path": "modules/Feyrist/flag_8.png",
         "down_hole": 0,
         "up_hole": 0,
         "wait": 10,
-        "position": "(3718, 155)"
-    },
-    {
-        "path": "modules/Feyrist/flag_9.png",
-        "down_hole": 0,
-        "up_hole": 0,
-        "wait": 10,
-        "position": "(3709, 181)"
+        "position": "3705, 178"
     }
-
 ]

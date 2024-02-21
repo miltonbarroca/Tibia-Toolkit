@@ -20,6 +20,14 @@ COR_LIFE = (39, 39, 39)
 PIXEL_EXURA = (952, 34)
 COR_EXURA = (36, 36, 36)
 
+PIXEL_RING = (1768, 247)
+COR_RING = (65, 68, 71)
+
+PIXEL_COLAR = (1768, 181)
+COR_COLAR = (70, 72, 75)
+
+BATTLE_REGION = (1572, 24, 154, 51)
+
 #0 - exori mas
 #9 - exori
 #8 - exori gran

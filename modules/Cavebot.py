@@ -25,7 +25,7 @@ def kill_box():
     while check_battle():
         if event_th.is_set():
             return
-
+        target()
         pg.press('9')
         if not check_battle() or event_th.is_set():
             return
@@ -49,12 +49,24 @@ def kill_box():
 
 def check_battle():
     try:
-        pg.locateOnScreen('img/battle_region.png', region=(1572, 24, 154, 51))
+        pg.locateOnScreen('img/battle_region.png', region=Constants.BATTLE_REGION)
         print('Battle vazio')
         return False 
     except pg.ImageNotFoundException:
         print('Monstros encontrados')
         return True
+
+def target():
+    while True:
+        try:
+            pg.locateOnScreen('img/target.png', confidence=0.9, region=Constants.BATTLE_REGION)
+            print('target encontrado')
+            return True  # Retorna True quando o alvo é encontrado
+        except pg.ImageNotFoundException:
+            print('Procurando target...')
+            pg.press('space')
+            pg.sleep(random.uniform(2, 2.5))
+            return False
 
 def next_box(path,wait, position):
     flag = pg.locateOnScreen(path, confidence= 0.8,region=Constants.MINIMAP)
@@ -121,11 +133,13 @@ global event_th
 event_th = threading.Event()
 th_run = threading.Thread(target=run)
 
-th_check_mana = my_thread.MyThread(lambda: CheckStatus.check_status('mana', random.uniform(1, 1.7), *Constants.PIXEL_MANA, Constants.COR_MANA, ['3']))
+th_check_mana = my_thread.MyThread(lambda: CheckStatus.check_status('mana', random.uniform(0.7, 1), *Constants.PIXEL_MANA, Constants.COR_MANA, '3'))
 th_check_life = my_thread.MyThread(lambda : CheckStatus.check_status('life',random.uniform(1, 1.8),*Constants.PIXEL_LIFE,Constants.COR_LIFE,'1'))
 th_check_exura = my_thread.MyThread(lambda : CheckStatus.check_status('exura',random.uniform(1, 1.2),*Constants.PIXEL_EXURA,Constants.COR_EXURA,'2'))
+th_check_ring = my_thread.MyThread(lambda : CheckStatus.check_status('ring',random.uniform(60, 120),*Constants.PIXEL_RING,Constants.COR_RING,'J'))
+th_check_colar = my_thread.MyThread(lambda : CheckStatus.check_status('colar',random.uniform(120, 160),*Constants.PIXEL_COLAR,Constants.COR_COLAR,'J'))
 
-group_threads = my_thread.ThreadGroup([th_check_mana,th_check_life,th_check_exura])
+group_threads = my_thread.ThreadGroup([th_check_mana,th_check_life,th_check_exura,th_check_colar,th_check_ring])
 
 with Listener(on_press=lambda key: key_code(key, group_threads)) as listener :
     listener.join()

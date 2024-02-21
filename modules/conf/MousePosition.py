@@ -10,4 +10,4 @@ def on_insert_pressed(e):
 print("Pressione Insert para obter as coordenadas e a cor RGB do mouse...")
 
 keyboard.hook(on_insert_pressed)
-keyboard.wait('esc')
+keyboard.wait('esc') 
