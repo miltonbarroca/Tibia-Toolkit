@@ -1,13 +1,13 @@
 import pyautogui as pg
 import time
-import random
 from conf import Constants
 
 
-def check_status(name,delay,x,y,rgb,button_name):
+def check_status(name, delay, x, y, rgb, button_names):
     print(f'checando {name}')
-    pg.sleep(3)
-    while pg.pixelMatchesColor(x,y,rgb):
-        for button_name in button_name:
+    time.sleep(2)
+    
+    while pg.pixelMatchesColor(x, y, rgb):
+        for button_name in button_names:
             pg.press(button_name)
-            pg.sleep(1)
+            time.sleep(delay)

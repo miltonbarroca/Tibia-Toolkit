@@ -7,6 +7,7 @@ import random
 import json
 import my_thread
 import CheckStatus
+from AutoEquip import check_amulet,check_ring
 from conf import Constants
 from GetLoot import get_loot
 from pynput import keyboard
@@ -25,32 +26,30 @@ def kill_box():
     while check_battle():
         if event_th.is_set():
             return
-        target()
         pg.press('9')
         if not check_battle() or event_th.is_set():
             return
-        time.sleep(random.uniform(2, 2.1))
-
+        time.sleep(random.uniform(2, 2.5))
+        target()
         pg.press('8')
         if not check_battle() or event_th.is_set():
             return
-        time.sleep(random.uniform(2, 2.7))
+        time.sleep(random.uniform(2, 2.5))
 
         pg.press('9')
         if not check_battle() or event_th.is_set():
             return
-        time.sleep(random.uniform(2, 2.4))
+        time.sleep(random.uniform(2, 2.5))
 
         pg.press('0')
         if not check_battle() or event_th.is_set():
             return
-        time.sleep(random.uniform(2, 2.8))
-
+        time.sleep(random.uniform(2, 2.5))
 
 def check_battle():
     try:
         pg.locateOnScreen('img/battle_region.png', region=Constants.BATTLE_REGION)
-        print('Battle vazio')
+        print('Battle vazio,indo para proxima box...')
         return False 
     except pg.ImageNotFoundException:
         print('Monstros encontrados')
@@ -60,8 +59,8 @@ def target():
     while True:
         try:
             pg.locateOnScreen('img/target.png', confidence=0.9, region=Constants.BATTLE_REGION)
-            print('target encontrado')
-            return True  # Retorna True quando o alvo é encontrado
+            print('target encontrado.')
+            return True
         except pg.ImageNotFoundException:
             print('Procurando target...')
             pg.press('space')
@@ -103,7 +102,11 @@ def run():
                 get_loot()
                 if event_th.is_set():
                     return
-                print('Coletando loot')
+                check_ring()
+                pg.sleep(1)
+                check_amulet()
+                pg.sleep(1)
+                print('Coletando loot...')
             next_box(item['path'], item['wait'], item['position'])
             if event_th.is_set():
                 return
@@ -115,10 +118,10 @@ def run():
                 get_loot()
                 if event_th.is_set():
                     return
+                check_ring()
                 next_box(item['path'], item['wait'], item['position'])
                 if event_th.is_set():
                     return
-
 
 def key_code(key,th_group):
     if key == keyboard.Key.esc:
@@ -133,13 +136,11 @@ global event_th
 event_th = threading.Event()
 th_run = threading.Thread(target=run)
 
-th_check_mana = my_thread.MyThread(lambda: CheckStatus.check_status('mana', random.uniform(0.7, 1), *Constants.PIXEL_MANA, Constants.COR_MANA, '3'))
-th_check_life = my_thread.MyThread(lambda : CheckStatus.check_status('life',random.uniform(1, 1.8),*Constants.PIXEL_LIFE,Constants.COR_LIFE,'1'))
-th_check_exura = my_thread.MyThread(lambda : CheckStatus.check_status('exura',random.uniform(1, 1.2),*Constants.PIXEL_EXURA,Constants.COR_EXURA,'2'))
-th_check_ring = my_thread.MyThread(lambda : CheckStatus.check_status('ring',random.uniform(60, 120),*Constants.PIXEL_RING,Constants.COR_RING,'J'))
-th_check_colar = my_thread.MyThread(lambda : CheckStatus.check_status('colar',random.uniform(120, 160),*Constants.PIXEL_COLAR,Constants.COR_COLAR,'J'))
+th_check_mana = my_thread.MyThread(lambda: CheckStatus.check_status('mana',2.5, *Constants.PIXEL_MANA, Constants.COR_MANA, '3'))
+th_check_life = my_thread.MyThread(lambda : CheckStatus.check_status('life',1,*Constants.PIXEL_LIFE,Constants.COR_LIFE,'1'))
+th_check_exura = my_thread.MyThread(lambda : CheckStatus.check_status('exura',1,*Constants.PIXEL_EXURA,Constants.COR_EXURA,'2'))
 
-group_threads = my_thread.ThreadGroup([th_check_mana,th_check_life,th_check_exura,th_check_colar,th_check_ring])
+group_threads = my_thread.ThreadGroup([th_check_mana,th_check_life,th_check_exura])
 
 with Listener(on_press=lambda key: key_code(key, group_threads)) as listener :
     listener.join()
