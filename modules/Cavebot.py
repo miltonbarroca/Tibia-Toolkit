@@ -30,18 +30,17 @@ def kill_box():
         if not check_battle() or event_th.is_set():
             return
         time.sleep(random.uniform(2, 2.5))
-        target()
+        pg.press('space')
         pg.press('8')
         if not check_battle() or event_th.is_set():
             return
         time.sleep(random.uniform(2, 2.5))
-
         pg.press('9')
         if not check_battle() or event_th.is_set():
             return
         time.sleep(random.uniform(2, 2.5))
-
         pg.press('0')
+        pg.press('space')
         if not check_battle() or event_th.is_set():
             return
         time.sleep(random.uniform(2, 2.5))
@@ -54,18 +53,6 @@ def check_battle():
     except pg.ImageNotFoundException:
         print('Monstros encontrados')
         return True
-
-def target():
-    while True:
-        try:
-            pg.locateOnScreen('img/target.png', confidence=0.9, region=Constants.BATTLE_REGION)
-            print('target encontrado.')
-            return True
-        except pg.ImageNotFoundException:
-            print('Procurando target...')
-            pg.press('space')
-            pg.sleep(random.uniform(2, 2.5))
-            return False
 
 def next_box(path,wait, position):
     flag = pg.locateOnScreen(path, confidence= 0.8,region=Constants.MINIMAP)
@@ -136,9 +123,9 @@ global event_th
 event_th = threading.Event()
 th_run = threading.Thread(target=run)
 
-th_check_mana = my_thread.MyThread(lambda: CheckStatus.check_status('mana',2.5, *Constants.PIXEL_MANA, Constants.COR_MANA, '3'))
+th_check_mana = my_thread.MyThread(lambda: CheckStatus.check_status('mana',2.3, *Constants.PIXEL_MANA, Constants.COR_MANA, '3'))
 th_check_life = my_thread.MyThread(lambda : CheckStatus.check_status('life',1,*Constants.PIXEL_LIFE,Constants.COR_LIFE,'1'))
-th_check_exura = my_thread.MyThread(lambda : CheckStatus.check_status('exura',1,*Constants.PIXEL_EXURA,Constants.COR_EXURA,'2'))
+th_check_exura = my_thread.MyThread(lambda : CheckStatus.check_status('exura',1.5,*Constants.PIXEL_EXURA,Constants.COR_EXURA,'2'))
 
 group_threads = my_thread.ThreadGroup([th_check_mana,th_check_life,th_check_exura])
 
