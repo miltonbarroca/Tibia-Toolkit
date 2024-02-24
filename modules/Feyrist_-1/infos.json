@@ -17,7 +17,7 @@
         "path": "modules/Feyrist_-1/flag_2.png",
         "down_hole": 0,
         "up_hole": 0,
-        "wait": 8,
+        "wait": 10,
         "position": "3735, 194"
     },
     {
@@ -38,7 +38,7 @@
         "path": "modules/Feyrist_-1/flag_5.png",
         "down_hole": 0,
         "up_hole": 0,
-        "wait": 25,
+        "wait": 27,
         "position": "3688, 180"
     },
     {
