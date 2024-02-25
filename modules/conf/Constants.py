@@ -7,15 +7,15 @@ EXETA = ['7']
 UTITO = ['4']
 ATK_COOLDOWNS = [random.uniform(2, 2.4) for _ in ATK_SPELLS]
 
-FOLDER_NAME = 'Feyrist_-1' #mude aqui quando for adicionar outra hunt pro bot
+FOLDER_NAME = 'GT_alt' #mude aqui quando for adicionar outra hunt pro bot
 
 MINIMAP = (1753,26,108,112)
 
 PIXEL_MANA = (979, 33)
 COR_MANA = (34, 34, 35)
 
-PIXEL_LIFE = (699, 30)
-COR_LIFE = (39, 39, 39)
+PIXEL_LIFE = (708, 32)
+COR_LIFE = (41, 41, 41)
 
 PIXEL_EXURA = (952, 34)
 COR_EXURA = (36, 36, 36)

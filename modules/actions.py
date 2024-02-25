@@ -20,14 +20,19 @@ def check_player():
     except pg.ImageNotFoundException:
         return True
     
-def hole_up(img_anchor,plus_x,plus_y):
-    box = pg.locateOnScreen(img_anchor, confidence=0.1)
-    if box:
-        x, y = pg.center(box)
-        pg.moveTo(x + plus_x,y +plus_y) 
-        pg.press('F1')
-        pg.click()
-        pg.sleep(1)
+def hole_up(should_up):
+    if should_up:
+        try:
+            box = pg.locateOnScreen('img/anchor_GT.png', confidence=0.8)
+            if box:
+                x, y = pg.center(box)
+                pg.moveTo(2779, 614)
+                pg.press('F1')
+                pg.click()
+                pg.sleep(3)
+        except Exception as e:
+            print(f"Erro durante a execução: {e}")
+            pass
 
 def hole_down(should_down):
     if should_down:
@@ -35,7 +40,7 @@ def hole_down(should_down):
             box = pg.locateOnScreen('img/hole_down.png', confidence=0.8)
             if box:
                 x, y = pg.center(box)
-                pg.moveTo(2372, 282)
+                pg.moveTo(2780, 349)
                 pg.click()
                 pg.sleep(5)
         except Exception as e:

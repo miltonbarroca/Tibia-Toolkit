@@ -1,7 +1,5 @@
 import pyautogui as pg
 import time
-from conf import Constants
-
 
 def check_status(name, delay, x, y, rgb, button_names):
     print(f'checando {name}')

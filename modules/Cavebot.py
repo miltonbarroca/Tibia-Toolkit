@@ -56,44 +56,62 @@ def check_player():
         return True
 
 def run():
-    event_th.is_set()
-    with open(f'modules/{Constants.FOLDER_NAME}/infos.json', 'r') as file:
-        data = json.loads(file.read())
-    while not event_th.is_set():
-        for item in data:
-            if event_th.is_set():
-                return
-            while actions.check_battle() == True:
-                print('matando box...')
-                kill_box()
-                if event_th.is_set():
-                    return
-                pg.sleep(1)
-                actions.get_loot()
-                if event_th.is_set():
-                    return
-                check_ring()
-                pg.sleep(1)
-                check_amulet()
-                pg.sleep(1)
-                print('Coletando loot...')
-            actions.next_box(item['path'], item['wait'], item['position'])
-            actions.hole_up(item['up_hole'],f'{Constants.FOLDER_NAME}/anchor_GT.png',2780, 610)
-            actions.hole_down(item['down_hole'])
-            if event_th.is_set():
-                return
-            if actions.check_player() == False:
-                kill_box()
-                if event_th.is_set():
-                    return
-                pg.sleep(1)
-                actions.get_loot()
-                if event_th.is_set():
-                    return
-                check_ring()
-                actions.next_box(item['path'], item['wait'], item['position'])
-                if event_th.is_set():
-                    return
+    try:
+        event_th.is_set()
+        with open(f'modules/{Constants.FOLDER_NAME}/infos.json', 'r') as file:
+            data = json.loads(file.read())
+        
+        while not event_th.is_set():
+            for item in data:
+                try:
+                    if event_th.is_set():
+                        return
+                    
+                    while actions.check_battle():
+                        print('matando box...')
+                        kill_box()
+                        if event_th.is_set():
+                            return
+                        pg.sleep(1)
+                        actions.get_loot()
+                        if event_th.is_set():
+                            return
+                        check_ring()
+                        pg.sleep(1)
+                        check_amulet()
+                        pg.sleep(1)
+                        print('Coletando loot...')
+                    
+                    actions.next_box(item['path'], item['wait'], item['position'])
+                    
+                    if item['down_hole']:
+                        kill_box()
+                        if event_th.is_set():
+                            return
+                        actions.get_loot()
+                        actions.hole_down(item['down_hole'])
+                    
+                    if item['up_hole']:
+                        actions.hole_up(item['up_hole'])
+                    if event_th.is_set():
+                        return
+                    
+                    if not actions.check_player():
+                        kill_box()
+                        if event_th.is_set():
+                            return
+                        pg.sleep(1)
+                        actions.get_loot()
+                        if event_th.is_set():
+                            return
+                        check_ring()
+                        actions.next_box(item['path'], item['wait'], item['position'])
+                        
+                except Exception as e:
+                    print(f"Erro durante a execução: {e}")
+                    
+    except Exception as e:
+        print(f"Erro durante a execução geral: {e}")
 
 def key_code(key,th_group):
     if key == keyboard.Key.esc:

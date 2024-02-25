@@ -3,63 +3,56 @@
         "path": "modules/Feyrist_-1/flag_0.png",
         "down_hole": 0,
         "up_hole": 0,
-        "wait": 10,
-        "position": "3712, 195"
+        "wait": 7,
+        "position": "3712, 196"
     },
     {
         "path": "modules/GT_alt/flag_1.png",
         "down_hole": 0,
         "up_hole": 0,
-        "wait": 10,
-        "position": "3725, 205"
+        "wait": 7,
+        "position": "3724, 196"
     },
     {
         "path": "modules/GT_alt/flag_2.png",
         "down_hole": 0,
         "up_hole": 0,
-        "wait": 10,
-        "position": "3741, 190"
+        "wait": 6,
+        "position": "3742, 198"
     },
     {
         "path": "modules/GT_alt/flag_3.png",
         "down_hole": 0,
         "up_hole": 0,
-        "wait": 10,
+        "wait": 8,
         "position": "3746, 185"
     },
     {
         "path": "modules/GT_alt/flag_4.png",
         "down_hole": 0,
         "up_hole": 0,
-        "wait": 10,
-        "position": "3751, 168"
+        "wait": 8,
+        "position": "3750, 168"
     },
     {
         "path": "modules/GT_alt/flag_5.png",
         "down_hole": 0,
         "up_hole": 0,
-        "wait": 10,
-        "position": "3732, 151"
+        "wait": 9,
+        "position": "3732, 155"
     },
     {
         "path": "modules/GT_alt/flag_6.png",
-        "down_hole": 0,
-        "up_hole": 0,
-        "wait": 10,
-        "position": "3717, 163"
-    },
-    {
-        "path": "modules/GT_alt/flag_7.png",
         "down_hole": 1,
         "up_hole": 0,
-        "wait": 10,
-        "position": "3718, 171"
+        "wait": 5,
+        "position": "3717, 163"
     },
     {
         "path": "modules/GT_alt/flag_0.png",
         "down_hole": 0,
         "up_hole": 1,
-        "wait": 10,
+        "wait": 9,
         "position": "3687, 167"
     }
 ]
