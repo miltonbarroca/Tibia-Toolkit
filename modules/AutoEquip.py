@@ -1,6 +1,5 @@
 import pyautogui as pg
 import time
-import keyboard
 
 def check_ring():
     if pg.pixelMatchesColor(1768, 248,(71, 74, 77)):
