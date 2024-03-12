@@ -20,14 +20,15 @@ def check_player():
     except pg.ImageNotFoundException:
         return True
     
-def hole_up(img_anchor):
+def hole_up(img_anchor,plus_x,plus_y):
     box = pg.locateOnScreen(img_anchor, confidence=0.8)
     if box:
         x, y = pg.center(box)
-        pg.moveTo(x + 270, y + 130, 2)
+        pg.moveTo(x + plus_x, y + plus_y)
+        pg.press('F1')
+        pg.click()
 
-keyboard.wait('h')
-hole_up('img/anchor_GT_alt_up.png')
+#hole_up('img/anchor_GT_alt_up.png',270,130)
 
 def hole_down():
     box = pg.locateOnScreen('img/hole_GT_alt.png',confidence=0.8)
