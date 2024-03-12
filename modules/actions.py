@@ -30,19 +30,22 @@ def hole_up(img_anchor,plus_x,plus_y):
 
 #hole_up('img/anchor_GT_alt_up.png',270,130)
 
-def hole_down():
-    box = pg.locateOnScreen('img/hole_GT_alt.png',confidence=0.8)
-    if box:
-        x, y = pg.center(box)
-        pg.moveTo(x,y)
-        pg.click()
-        pg.sleep(3)
+def hole_down(should_down):
+    if should_down:
+        box = pg.locateOnScreen('img/hole_GT_alt.png',confidence=0.8)
+        if box:
+            x, y = pg.center(box)
+            pg.moveTo(x,y)
+            pg.click()
+            pg.sleep(3)
 
 def next_box(path,wait):
     flag = pg.locateOnScreen(path, confidence= 0.9,region=Constants.MINIMAP)
-    x,y = pg.center(flag)
-    pg.moveTo(x,y)
-    pg.click(wait)
+    if flag:
+        x,y = pg.center(flag)
+        pg.moveTo(x,y)
+        pg.click()
+        pg.sleep(wait)
 
 loot_coordinates = [
     (2849, 478),

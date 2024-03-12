@@ -80,8 +80,9 @@ def run():
                         if event_th.is_set():
                             return
                         check_ring()
-                        actions.next_box(item['path'], item['wait'], item['position'])
-                        
+                    actions.hole_down(item['down_hole'])
+                    actions.hole_up(item['up_hole'],f'{Constants.FOLDER_NAME}/anchor_GT_alt_up.png',270,130)
+
                 except Exception as e:
                     print(f"Erro durante a execução: {e}")
                     
