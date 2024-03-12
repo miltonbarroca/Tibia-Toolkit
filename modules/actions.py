@@ -20,13 +20,14 @@ def check_player():
     except pg.ImageNotFoundException:
         return True
     
-def hole_up(img_anchor,plus_x,plus_y):
-    box = pg.locateOnScreen(img_anchor, confidence=0.8)
-    if box:
-        x, y = pg.center(box)
-        pg.moveTo(x + plus_x, y + plus_y)
-        pg.press('F1')
-        pg.click()
+def hole_up(shloud_up,img_anchor,plus_x,plus_y):
+    if shloud_up:
+        box = pg.locateOnScreen(img_anchor, confidence=0.8)
+        if box:
+            x, y = pg.center(box)
+            pg.moveTo(x + plus_x, y + plus_y)
+            pg.press('F1')
+            pg.click()
 
 #hole_up('img/anchor_GT_alt_up.png',270,130)
 
@@ -48,14 +49,14 @@ def next_box(path,wait):
         pg.sleep(wait)
 
 loot_coordinates = [
-    (2849, 478),
-    (2907, 479),
-    (2914, 545),
-    (2911, 613),
-    (2843, 613),
-    (2771, 607),
-    (2772, 539),
-    (2771, 477)
+    (857, 382),
+    (921, 389),
+    (986, 389),
+    (991, 459),
+    (990, 520),
+    (917, 516),
+    (860, 520),
+    (857, 452)
 ]
 
 def get_loot():
