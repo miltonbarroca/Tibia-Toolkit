@@ -20,39 +20,28 @@ def check_player():
     except pg.ImageNotFoundException:
         return True
     
-def hole_up(should_up):
-    if should_up:
-        try:
-            box = pg.locateOnScreen('img/anchor_GT.png', confidence=0.8)
-            if box:
-                x, y = pg.center(box)
-                pg.moveTo(2779, 614)
-                pg.press('F1')
-                pg.click()
-                pg.sleep(3)
-        except Exception as e:
-            print(f"Erro durante a execução: {e}")
-            pass
+def hole_up(img_anchor):
+    box = pg.locateOnScreen(img_anchor, confidence=0.8)
+    if box:
+        x, y = pg.center(box)
+        pg.moveTo(x + 270, y + 130, 2)
 
-def hole_down(should_down):
-    if should_down:
-        try:
-            box = pg.locateOnScreen('img/hole_down.png', confidence=0.8)
-            if box:
-                x, y = pg.center(box)
-                pg.moveTo(2780, 349)
-                pg.click()
-                pg.sleep(5)
-        except Exception as e:
-            pass
+keyboard.wait('h')
+hole_up('img/anchor_GT_alt_up.png')
 
-def next_box(path,wait, position):
-    flag = pg.locateOnScreen(path, confidence= 0.8,region=Constants.MINIMAP)
-    if flag:
-        position = eval(position)
-        pg.moveTo(position[0], position[1])
+def hole_down():
+    box = pg.locateOnScreen('img/hole_GT_alt.png',confidence=0.8)
+    if box:
+        x, y = pg.center(box)
+        pg.moveTo(x,y)
         pg.click()
-        pg.sleep(wait)
+        pg.sleep(3)
+
+def next_box(path,wait):
+    flag = pg.locateOnScreen(path, confidence= 0.9,region=Constants.MINIMAP)
+    x,y = pg.center(flag)
+    pg.moveTo(x,y)
+    pg.click(wait)
 
 loot_coordinates = [
     (2849, 478),
@@ -66,6 +55,7 @@ loot_coordinates = [
 ]
 
 def get_loot():
+    print('Coletando loot...')
     keyboard.press('shift')
     for coord in loot_coordinates:
         pg.click(x=coord[0], y=coord[1], button='right')

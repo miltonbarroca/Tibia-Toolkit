@@ -13,17 +13,9 @@ from conf import Constants
 from pynput import keyboard
 from pynput.keyboard import Listener
 
-
-def exeta():
-    for tecla in Constants.EXETA:
-        pg.press(tecla)
-
-def utito():
-    for tecla in Constants.UTITO:
-        pg.press(tecla)
-
 def kill_box():
     while actions.check_battle():
+        print('matando box...')
         if event_th.is_set():
             return
         pg.press('9')
@@ -66,9 +58,7 @@ def run():
                 try:
                     if event_th.is_set():
                         return
-                    
                     while actions.check_battle():
-                        print('matando box...')
                         kill_box()
                         if event_th.is_set():
                             return
@@ -80,23 +70,8 @@ def run():
                         pg.sleep(1)
                         check_amulet()
                         pg.sleep(1)
-                        print('Coletando loot...')
-                    
-                    actions.next_box(item['path'], item['wait'], item['position'])
-                    
-                    if item['down_hole']:
-                        kill_box()
-                        if event_th.is_set():
-                            return
-                        actions.get_loot()
-                        actions.hole_down(item['down_hole'])
-                    
-                    if item['up_hole']:
-                        actions.hole_up(item['up_hole'])
-                    if event_th.is_set():
-                        return
-                    
-                    if not actions.check_player():
+                    actions.next_box(item['path'], item['wait'], item['position'])         
+                    if actions.check_player():
                         kill_box()
                         if event_th.is_set():
                             return
