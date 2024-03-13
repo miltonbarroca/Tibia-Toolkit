@@ -70,7 +70,7 @@ def run():
                         pg.sleep(1)
                         check_amulet()
                         pg.sleep(1)
-                    actions.next_box(item['path'], item['wait'], item['position'])         
+                    actions.next_box(item['path'], item['wait'])         
                     if actions.check_player():
                         kill_box()
                         if event_th.is_set():
@@ -80,9 +80,14 @@ def run():
                         if event_th.is_set():
                             return
                         check_ring()
+                        pg.sleep(1)
+                        check_amulet()
                     actions.hole_down(item['down_hole'])
-                    actions.hole_up(item['up_hole'],f'{Constants.FOLDER_NAME}/anchor_GT_alt_up.png',270,130)
-
+                    if event_th.is_set():
+                        return
+                    actions.hole_up(item['up_hole'],'modules/GT_alt/anchor_GT_alt_up.png',270,130)
+                    if event_th.is_set():
+                        return
                 except Exception as e:
                     print(f"Erro durante a execução: {e}")
                     

@@ -33,7 +33,7 @@ def hole_up(shloud_up,img_anchor,plus_x,plus_y):
 
 def hole_down(should_down):
     if should_down:
-        box = pg.locateOnScreen('img/hole_GT_alt.png',confidence=0.8)
+        box = pg.locateOnScreen('modules/GT_alt/hole_down.png',confidence=0.8)
         if box:
             x, y = pg.center(box)
             pg.moveTo(x,y)
