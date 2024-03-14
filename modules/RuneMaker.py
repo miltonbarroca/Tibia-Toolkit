@@ -16,7 +16,7 @@ import random
 HOTKEYS = ['off', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12']
 
 root = ThemedTk(theme="black", themebg=True)
-root.title("MyInterface")
+root.title("RuneMaker Pro")
 #root.geometry("500x500+300+300")
 root.resizable(False, False)
 style = Style()
