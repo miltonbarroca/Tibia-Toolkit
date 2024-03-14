@@ -1,14 +1,13 @@
 import pyautogui as pg
 import time
 import threading
-import pyautogui as pg
 import time
 import random
 import json
 import my_thread
 import CheckStatus
 import actions
-from AutoEquip import check_amulet,check_ring
+import AutoEquip
 from conf import Constants
 from pynput import keyboard
 from pynput.keyboard import Listener
@@ -66,9 +65,9 @@ def run():
                         actions.get_loot()
                         if event_th.is_set():
                             return
-                        check_ring()
+                        AutoEquip.check_ring()
                         pg.sleep(1)
-                        check_amulet()
+                        AutoEquip.check_amulet()
                         pg.sleep(1)
                     actions.next_box(item['path'], item['wait'])         
                     if actions.check_player():
@@ -79,9 +78,9 @@ def run():
                         actions.get_loot()
                         if event_th.is_set():
                             return
-                        check_ring()
+                        AutoEquip.check_ring()
                         pg.sleep(1)
-                        check_amulet()
+                        AutoEquip.check_amulet()
                     actions.hole_down(item['down_hole'])
                     if event_th.is_set():
                         return
