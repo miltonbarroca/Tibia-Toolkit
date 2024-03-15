@@ -7,7 +7,7 @@ EXETA = ['7']
 UTITO = ['4']
 ATK_COOLDOWNS = [random.uniform(2, 2.4) for _ in ATK_SPELLS]
 
-FOLDER_NAME = 'Feyrist_-1' #mude aqui quando for adicionar outra hunt pro bot
+FOLDER_NAME = 'GT_alt' #mude aqui quando for adicionar outra hunt pro bot
 
 MINIMAP = (1753,26,108,112)
 

@@ -29,7 +29,7 @@ def generate_widget(widget, row, column, sticky="NSEW", columnspan=None, **kwarg
     my_widget.grid(row=row, column=column, padx=5, pady=5, columnspan=columnspan, sticky=sticky)
     return my_widget
 
-def load_thrash():
+def load_trash():
     caminho_imagem = os.path.join('img', 'trash.png')    
     load_img = Image.open(caminho_imagem)
     resized_image = load_img.resize((20, 20))
@@ -70,7 +70,7 @@ def get_mana_position():
 btn_mana_position = generate_widget(Button, row=4, column=0, text="Mana Position",command=get_mana_position)
 lbl_mana_position = generate_widget(Label, row=4, column=1, text="Empty", font=("Roboto", 12), sticky="W")
 
-trash_dir, trash_img = load_thrash()  
+trash_dir, trash_img = load_trash()  
 
 def clear():
     lbl_mana_position.configure(text="Empty")
