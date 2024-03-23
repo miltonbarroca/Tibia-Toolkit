@@ -1,0 +1,44 @@
+[
+    {
+        "path": "modules/Exotic_cave_-2/flag_0.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 15
+    },
+    {
+        "path": "modules/Exotic_cave_-2/flag_2.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 10
+    },
+    {
+        "path": "modules/Exotic_cave_-2/flag_3.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 8
+    },
+    {
+        "path": "modules/Exotic_cave_-2/flag_4.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 10
+    },
+    {
+        "path": "modules/Exotic_cave_-2/flag_6.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 12
+    },
+    {
+        "path": "modules/Exotic_cave_-2/flag_7.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 15
+    },
+    {
+        "path": "modules/Exotic_cave_-2/flag_8.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 7
+    }
+]

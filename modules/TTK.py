@@ -35,9 +35,6 @@ def kill_box():
         if not actions.check_battle() or event_th.is_set():
             return
         time.sleep(random.uniform(2, 2.5))
-
-    
-    
 def check_player():
     try:
         pg.locateOnScreen('img/player.png', confidence=0.9, region=Constants.MINIMAP)
@@ -58,6 +55,7 @@ def run():
                     if event_th.is_set():
                         return
                     while actions.check_battle():
+                        pg.press('4')
                         kill_box()
                         if event_th.is_set():
                             return
@@ -69,8 +67,10 @@ def run():
                         pg.sleep(1)
                         AutoEquip.check_amulet()
                         pg.sleep(1)
-                    actions.next_box(item['path'], item['wait'])         
+                    actions.next_box(item['path'], item['wait'])
+                    pg.sleep(1)         
                     if actions.check_player():
+                        pg.press('4')
                         kill_box()
                         if event_th.is_set():
                             return
@@ -82,9 +82,11 @@ def run():
                         pg.sleep(1)
                         AutoEquip.check_amulet()
                     actions.hole_down(item['down_hole'])
+                    pg.sleep(1)
                     if event_th.is_set():
                         return
                     actions.hole_up(item['up_hole'],'modules/GT_alt/anchor_GT_alt_up.png',270,130)
+                    pg.sleep(1)
                     if event_th.is_set():
                         return
                 except Exception as e:

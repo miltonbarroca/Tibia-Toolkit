@@ -11,11 +11,11 @@ FOLDER_NAME = 'GT_alt' #mude aqui quando for adicionar outra hunt pro bot
 
 MINIMAP = (1753,26,108,112)
 
-PIXEL_MANA = (979, 33)
-COR_MANA = (34, 34, 35)
+PIXEL_MANA = (1195, 33)
+COR_MANA = (27, 27, 27)
 
-PIXEL_LIFE = (708, 32)
-COR_LIFE = (41, 41, 41)
+PIXEL_LIFE = (609, 30)
+COR_LIFE = (39, 39, 39)
 
 PIXEL_EXURA = (952, 34)
 COR_EXURA = (36, 36, 36)
