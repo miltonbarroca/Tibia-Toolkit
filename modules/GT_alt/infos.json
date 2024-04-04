@@ -3,48 +3,48 @@
         "path": "modules/GT_alt/flag_0.png",
         "down_hole": 0,
         "up_hole": 0,
-        "wait": 5
+        "wait": 3
     },
     {
         "path": "modules/GT_alt/flag_1.png",
         "down_hole": 0,
         "up_hole": 0,
-        "wait": 4
+        "wait": 1
     },
     {
         "path": "modules/Feyrist_-1/flag_3.png",
         "down_hole": 0,
         "up_hole": 0,
-        "wait": 7
+        "wait": 3
     },
     {
         "path": "modules/GT_alt/flag_3.png",
         "down_hole": 0,
         "up_hole": 0,
-        "wait": 7
+        "wait": 3
     },
     {
         "path": "modules/GT_alt/flag_4.png",
         "down_hole": 0,
         "up_hole": 0,
-        "wait": 7
+        "wait": 3
     },
     {
         "path": "modules/GT_alt/flag_5.png",
         "down_hole": 0,
         "up_hole": 0,
-        "wait": 7
+        "wait": 3
     },
     {
         "path": "modules/GT_alt/flag_6.png",
         "down_hole": 1,
         "up_hole": 0,
-        "wait": 8
+        "wait": 4
     },
     {
         "path": "modules/GT_alt/flag_7.png",
         "down_hole": 0,
         "up_hole": 1,
-        "wait": 6
+        "wait": 5
     }
 ]

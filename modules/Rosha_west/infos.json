@@ -1,0 +1,56 @@
+[
+    {
+        "path": "modules/Rosha_west/flag_0.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 7
+    },
+    {
+        "path": "modules/Rosha_west/flag_1.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 5
+    },
+    {
+        "path": "modules/Rosha_west/flag_2.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 5
+    },
+    {
+        "path": "modules/Rosha_west/flag_4.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 6
+    },
+    {
+        "path": "modules/Rosha_west/flag_5.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 5
+    },
+    {
+        "path": "modules/Rosha_west/flag_6.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 7
+    },
+    {
+        "path": "modules/Rosha_west/flag_7.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 5
+    },
+    {
+        "path": "modules/Rosha_west/flag_8.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 6
+    },
+    {
+        "path": "modules/Rosha_west/flag_10.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 7
+    }
+]

@@ -67,8 +67,10 @@ def run():
                         pg.sleep(1)
                         AutoEquip.check_amulet()
                         pg.sleep(1)
+                        pg.press('s')
                     actions.next_box(item['path'], item['wait'])
-                    pg.sleep(1)         
+                    pg.sleep(1)    
+                    pg.press('4')     
                     if actions.check_player():
                         pg.press('4')
                         kill_box()
@@ -87,11 +89,11 @@ def run():
                         return
                     actions.hole_up(item['up_hole'],'modules/GT_alt/anchor_GT_alt_up.png',270,130)
                     pg.sleep(1)
+                    pg.press('i')
                     if event_th.is_set():
                         return
                 except Exception as e:
                     print(f"Erro durante a execução: {e}")
-                    
     except Exception as e:
         print(f"Erro durante a execução geral: {e}")
 

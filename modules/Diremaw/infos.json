@@ -1,0 +1,86 @@
+[
+    {
+        "path": "modules/Diremaw/flag_0.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 10
+    },
+    {
+        "path": "modules/Diremaw/flag_1.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 5
+    },
+    {
+        "path": "modules/Diremaw/flag_2.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 5
+    },
+    {
+        "path": "modules/Diremaw/flag_3.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 6
+    },
+    {
+        "path": "modules/Diremaw/flag_4.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 10
+    },
+    {
+        "path": "modules/Diremaw/flag_5.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 5
+    },
+    {
+        "path": "modules/Diremaw/flag_6.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 5
+    },
+    {
+        "path": "modules/Diremaw/flag_7.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 6
+    },
+    {
+        "path": "modules/Diremaw/flag_8.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 6
+    },
+    {
+        "path": "modules/Diremaw/flag_9.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 10
+    },
+    {
+        "path": "modules/Diremaw/flag_10.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 7
+    },
+    {
+        "path": "modules/Diremaw/flag_11.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 9
+    },
+    {
+        "path": "modules/Diremaw/flag_12.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 6
+    },
+    {
+        "path": "modules/Diremaw/flag_13.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 10
+    }
+]
