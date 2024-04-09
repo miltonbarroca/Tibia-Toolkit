@@ -35,13 +35,6 @@ def kill_box():
         if not actions.check_battle() or event_th.is_set():
             return
         time.sleep(random.uniform(2, 2.5))
-def check_player():
-    try:
-        pg.locateOnScreen('img/player.png', confidence=0.9, region=Constants.MINIMAP)
-        print('player encontrado')
-        return False 
-    except pg.ImageNotFoundException:
-        return True
 
 def run():
     try:
@@ -61,28 +54,16 @@ def run():
                             return
                         pg.sleep(1)
                         actions.get_loot()
+                        pg.press('s')
                         if event_th.is_set():
                             return
                         AutoEquip.check_ring()
                         pg.sleep(1)
                         AutoEquip.check_amulet()
                         pg.sleep(1)
-                        pg.press('s')
                     actions.next_box(item['path'], item['wait'])
                     pg.sleep(1)    
-                    pg.press('4')     
-                    if actions.check_player():
-                        pg.press('4')
-                        kill_box()
-                        if event_th.is_set():
-                            return
-                        pg.sleep(1)
-                        actions.get_loot()
-                        if event_th.is_set():
-                            return
-                        AutoEquip.check_ring()
-                        pg.sleep(1)
-                        AutoEquip.check_amulet()
+                    pg.press('i')
                     actions.hole_down(item['down_hole'])
                     pg.sleep(1)
                     if event_th.is_set():

@@ -27,6 +27,7 @@ PIXEL_COLAR = (1768, 181)
 COR_COLAR = (70, 72, 75)
 
 BATTLE_REGION = (1572, 24, 154, 51)
+BATTLE_PLAYER = (0,25,171,51)
 
 #0 - exori mas
 #9 - exori
@@ -34,3 +35,10 @@ BATTLE_REGION = (1572, 24, 154, 51)
 #7 - exeta res
 #6 - exori amp kor
 #4 - utito tempo ou utamo
+
+# def check():
+#     while True:
+#         box = pg.locateOnScreen('img/battle_player.png')
+#         print(box)
+#         pg.sleep(1)
+# check()

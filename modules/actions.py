@@ -10,15 +10,22 @@ def check_battle():
     except pg.ImageNotFoundException:
         print('Monstros encontrados')
         return True
-    
 
 def check_player():
     try:
-        pg.locateOnScreen('img/player.png', confidence=0.9, region=Constants.MINIMAP)
-        print('player encontrado')
+        pg.locateOnScreen('img/battle_region.png', region=Constants.BATTLE_PLAYER)
+        print('nenhum player encontrado...')
         return False 
     except pg.ImageNotFoundException:
-        return True
+        print('player encontrado!!!!!!!!!!!!!!!!!!!!!!!')
+        return True   
+
+def play_sound():
+    pg.mixer.init()
+    pg.mixer.music.load("sound/evacuation_alarm.wav")
+    pg.mixer.music.play()
+
+check_player()
     
 def hole_up(shloud_up,img_anchor,plus_x,plus_y):
     if shloud_up:
