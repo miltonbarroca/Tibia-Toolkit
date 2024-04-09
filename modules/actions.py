@@ -1,6 +1,8 @@
 import pyautogui as pg
 from conf import Constants
 import keyboard
+from pydub import AudioSegment
+from pydub.playback import play
 
 def check_battle():
     try:
@@ -18,14 +20,12 @@ def check_player():
         return False 
     except pg.ImageNotFoundException:
         print('player encontrado!!!!!!!!!!!!!!!!!!!!!!!')
-        return True   
+        play_sound()
+        return True  
 
-def play_sound():
-    pg.mixer.init()
-    pg.mixer.music.load("sound/evacuation_alarm.wav")
-    pg.mixer.music.play()
-
-check_player()
+def play_sound():     
+    sound = AudioSegment.from_wav("sound/evacuation_alarm.wav")
+    play(sound)
     
 def hole_up(shloud_up,img_anchor,plus_x,plus_y):
     if shloud_up:

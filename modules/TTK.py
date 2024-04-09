@@ -14,9 +14,11 @@ from pynput.keyboard import Listener
 
 def kill_box():
     while actions.check_battle():
-        print('matando box...')
         if event_th.is_set():
             return
+        if actions.check_player():
+            return
+        print('Matando box...')
         pg.press('9')
         if not actions.check_battle() or event_th.is_set():
             return
