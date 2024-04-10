@@ -12,29 +12,38 @@ from conf import Constants
 from pynput import keyboard
 from pynput.keyboard import Listener
 
+'''
+$$$$$$$$\ $$\ $$\       $$\                 $$$$$$$$\                  $$\       $$\   $$\ $$\   $$\     
+\__$$  __|\__|$$ |      \__|                \__$$  __|                 $$ |      $$ | $$  |\__|  $$ |    
+   $$ |   $$\ $$$$$$$\  $$\  $$$$$$\           $$ | $$$$$$\   $$$$$$\  $$ |      $$ |$$  / $$\ $$$$$$\   
+   $$ |   $$ |$$  __$$\ $$ | \____$$\          $$ |$$  __$$\ $$  __$$\ $$ |      $$$$$  /  $$ |\_$$  _|  
+   $$ |   $$ |$$ |  $$ |$$ | $$$$$$$ |         $$ |$$ /  $$ |$$ /  $$ |$$ |      $$  $$<   $$ |  $$ |    
+   $$ |   $$ |$$ |  $$ |$$ |$$  __$$ |         $$ |$$ |  $$ |$$ |  $$ |$$ |      $$ |\$$\  $$ |  $$ |$$\ 
+   $$ |   $$ |$$$$$$$  |$$ |\$$$$$$$ |         $$ |\$$$$$$  |\$$$$$$  |$$ |      $$ | \$$\ $$ |  \$$$$  |
+   \__|   \__|\_______/ \__| \_______|         \__| \______/  \______/ \__|      \__|  \__|\__|   \____/                                                                                                 
+'''
+
 def kill_box():
     while actions.check_battle():
         if event_th.is_set():
             return
-        if actions.check_player():
-            return
         print('Matando box...')
         pg.press('9')
-        if not actions.check_battle() or event_th.is_set():
+        if not actions.check_battle() or event_th.is_set() or actions.check_player():
             return
         time.sleep(random.uniform(2, 2.5))
         pg.press('space')
         pg.press('8')
-        if not actions.check_battle() or event_th.is_set():
+        if not actions.check_battle() or event_th.is_set() or actions.check_player():
             return
         time.sleep(random.uniform(2, 2.5))
         pg.press('9')
-        if not actions.check_battle() or event_th.is_set():
+        if not actions.check_battle() or event_th.is_set() or actions.check_player():
             return
         time.sleep(random.uniform(2, 2.5))
         pg.press('0')
         pg.press('space')
-        if not actions.check_battle() or event_th.is_set():
+        if not actions.check_battle() or event_th.is_set() or actions.check_player():
             return
         time.sleep(random.uniform(2, 2.5))
 

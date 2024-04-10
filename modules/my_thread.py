@@ -14,8 +14,7 @@ class MyThread():
     def stop(self):
         self.event.set()
         self.thread.join()
-
-
+        
     def run(self):
         while not self.event.is_set():
             self.work()
