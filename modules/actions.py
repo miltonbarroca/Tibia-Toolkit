@@ -22,7 +22,7 @@ def check_battle():
 
 def check_player():
     try:
-        pg.locateOnScreen('img/battle_region.png', region=Constants.BATTLE_PLAYER)
+        pg.locateOnScreen('img/battle_player.png', region=Constants.BATTLE_PLAYER)
         print('nenhum player encontrado...')
         return False 
     except pg.ImageNotFoundException:
