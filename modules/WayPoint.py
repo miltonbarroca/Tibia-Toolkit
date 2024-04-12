@@ -17,8 +17,6 @@ def create_folder():
     else:
         print(f'O diretório {Constants.FOLDER_NAME} já existe em {current_directory}')
 
-
-
 class Rec:
     def __init__(self):
         create_folder()
