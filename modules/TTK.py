@@ -28,12 +28,13 @@ def kill_box():
         if event_th.is_set():
             return
         print('Matando box...')
+        pg.press('space')
         pg.press('9')
         if not actions.check_battle() or event_th.is_set() or actions.check_player():
             return
         time.sleep(random.uniform(2, 2.5))
-        pg.press('space')
         pg.press('8')
+        pg.press('6')
         if not actions.check_battle() or event_th.is_set() or actions.check_player():
             return
         time.sleep(random.uniform(2, 2.5))
@@ -43,6 +44,7 @@ def kill_box():
         time.sleep(random.uniform(2, 2.5))
         pg.press('0')
         pg.press('space')
+        pg.press('6')
         if not actions.check_battle() or event_th.is_set() or actions.check_player():
             return
         time.sleep(random.uniform(2, 2.5))
@@ -50,7 +52,7 @@ def kill_box():
 def run():
     try:
         event_th.is_set()
-        with open(f'modules/{Constants.FOLDER_NAME}/infos.json', 'r') as file:
+        with open(f'scripts\{Constants.SCRIPT_NAME}.json', 'r') as file:
             data = json.loads(file.read())
         
         while not event_th.is_set():
@@ -65,7 +67,6 @@ def run():
                             return
                         pg.sleep(1)
                         actions.get_loot()
-                        pg.press('s')
                         if event_th.is_set():
                             return
                         AutoEquip.check_ring()
