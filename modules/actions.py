@@ -37,10 +37,12 @@ def hole_up(shloud_up,img_anchor,plus_x,plus_y):
         if box:
             x, y = pg.center(box)
             pg.moveTo(x + plus_x, y + plus_y)
+            pg.sleep(1)
             pg.press('F1')
             pg.click()
 
-#hole_up('img/anchor_GT_alt_up.png',270,130)
+# keyboard.wait('h')
+# hole_up(True,'img/anchor_exotic.png',-80,310)
 
 def hole_down(should_down):
     if should_down:
@@ -76,6 +78,3 @@ def get_loot():
     for coord in loot_coordinates:
         pg.click(x=coord[0], y=coord[1], button='right')
     keyboard.release('shift')
-
-
-

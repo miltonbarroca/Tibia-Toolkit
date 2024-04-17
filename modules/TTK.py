@@ -29,12 +29,12 @@ def kill_box():
             return
         print('Matando box...')
         pg.press('space')
+        pg.press('7')
         pg.press('9')
         if not actions.check_battle() or event_th.is_set() or actions.check_player():
             return
         time.sleep(random.uniform(2, 2.5))
         pg.press('8')
-        pg.press('6')
         if not actions.check_battle() or event_th.is_set() or actions.check_player():
             return
         time.sleep(random.uniform(2, 2.5))
@@ -44,7 +44,7 @@ def kill_box():
         time.sleep(random.uniform(2, 2.5))
         pg.press('0')
         pg.press('space')
-        pg.press('6')
+        pg.press('7')
         if not actions.check_battle() or event_th.is_set() or actions.check_player():
             return
         time.sleep(random.uniform(2, 2.5))
@@ -61,8 +61,8 @@ def run():
                     if event_th.is_set():
                         return
                     while actions.check_battle():
-                        pg.press('4')
                         kill_box()
+                        pg.press('4')
                         if event_th.is_set():
                             return
                         pg.sleep(1)
@@ -70,17 +70,16 @@ def run():
                         if event_th.is_set():
                             return
                         AutoEquip.check_ring()
-                        pg.sleep(1)
+                        pg.sleep(0.5)
                         AutoEquip.check_amulet()
                         pg.press('i')
                     actions.next_box(item['path'], item['wait'])
                     pg.sleep(1)    
                     pg.press('i')
-                    actions.hole_down(item['down_hole'])
-                    pg.sleep(1)
+                    actions.hole_down(item['down_hole']) 
                     if event_th.is_set():
                         return
-                    actions.hole_up(item['up_hole'],'modules/GT_alt/anchor_GT_alt_up.png',270,130)
+                    actions.hole_up(item['up_hole'],'img/stair_up.png',1,1)
                     pg.sleep(1)
                     pg.press('i')
                     if event_th.is_set():
