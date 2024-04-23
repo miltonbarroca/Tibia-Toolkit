@@ -23,12 +23,12 @@ def main():
     check_ring_thread.start()
 
     while True:
-        with open(f'scripts\{Constants.SCRIPT_NAME}.json', 'r') as file:
+        with open(f'scripts/{Constants.SCRIPT_NAME}.json', 'r') as file:
             data = json.loads(file.read())
             while True:
                 if actions.check_battle():
                     pg.press('space')
-                    time.sleep(12)
+                    time.sleep(9)
                     actions.get_loot()
                     break  # Saia do loop interno quando a batalha for encontrada
                 else:

@@ -61,8 +61,9 @@ def run():
                     if event_th.is_set():
                         return
                     while actions.check_battle():
-                        kill_box()
+                        pg.sleep(1)
                         pg.press('4')
+                        kill_box()
                         if event_th.is_set():
                             return
                         pg.sleep(1)
@@ -70,9 +71,11 @@ def run():
                         if event_th.is_set():
                             return
                         AutoEquip.check_ring()
-                        pg.sleep(0.5)
+                        pg.sleep(1)
                         AutoEquip.check_amulet()
+                        pg.sleep(1)
                         pg.press('i')
+                        pg.press('s')
                     actions.next_box(item['path'], item['wait'])
                     pg.sleep(1)    
                     pg.press('i')
