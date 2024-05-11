@@ -5,7 +5,7 @@ import os
 from pydub import AudioSegment
 from pydub.playback import play
 
-ffmpeg_path = os.path.abspath("sound/ffmpeg.exe")
+AudioSegment.converter = os.path.abspath("sound/ffmpeg.exe")
 
 def play_sound():     
     sound = AudioSegment.from_wav("sound/evacuation_alarm.wav")

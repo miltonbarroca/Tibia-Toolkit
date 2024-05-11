@@ -25,7 +25,7 @@ Bem-vindo ao repositório Tibia Automation Toolkit, uma coleção abrangente de 
 | AutoAmulet      | ✅      |
 | AutoRing        | ✅      |
 | FoodEater       | 🚧      |
-| RuneMaker       | ✅🚧    |
+| RuneMaker       | ✅      |
 | SkillTrainer    | ❌      |
 
 ## Requisitos de Execução:

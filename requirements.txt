@@ -1,8 +1,8 @@
-pywin32
-pygetwindow
-opencv-python
-numpy
 pyautogui
-Pillow
 keyboard
 pydub
+random
+time
+json
+logging
+pynput
