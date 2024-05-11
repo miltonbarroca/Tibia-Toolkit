@@ -8,8 +8,6 @@ Bem-vindo ao repositório Tibia Automation Toolkit, uma coleção abrangente de 
 
 - **Caça Automatizada 🎯 (CaveBot):** Scripts especializados para automação de caça, otimizando o processo de busca por monstros e aumentando a eficácia de experiência.
 
-- **Treinamento de Habilidades 🏋️‍♂️:** Ferramentas específicas para treinamento automático de habilidades, permitindo que seu personagem evolua mais rapidamente em diversas áreas, como espadas, escudos, magias, entre outras.
-
 - **Autoloot Aprimorado 🧳:** Uma solução avançada para automatizar o processo de loot, organização e armazenamento de itens. Maximize seus ganhos sem esforço manual.
 
 - **Gerenciamento de Recursos 📊:** Ferramentas para otimizar o uso de poções, runas e outros recursos.

@@ -8,6 +8,10 @@ from conf import Constants
 import CheckStatus
 import keyboard
 
+'''
+USE ESSE MODULO PARA HUNTS MAIS SIMPLES COMO STONEREFINER OU ITENS DE IMBUI
+'''
+
 class CheckRingThread(Thread):
     def __init__(self):
         super().__init__()
