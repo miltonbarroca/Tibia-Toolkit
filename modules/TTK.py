@@ -8,20 +8,22 @@ import my_thread
 import CheckStatus
 import actions
 import AutoEquip
+import logging
 from conf import Constants
 from pynput import keyboard
 from pynput.keyboard import Listener
 
 '''
-$$$$$$$$\ $$\ $$\       $$\                 $$$$$$$$\                  $$\       $$\   $$\ $$\   $$\     
-\__$$  __|\__|$$ |      \__|                \__$$  __|                 $$ |      $$ | $$  |\__|  $$ |    
-   $$ |   $$\ $$$$$$$\  $$\  $$$$$$\           $$ | $$$$$$\   $$$$$$\  $$ |      $$ |$$  / $$\ $$$$$$\   
-   $$ |   $$ |$$  __$$\ $$ | \____$$\          $$ |$$  __$$\ $$  __$$\ $$ |      $$$$$  /  $$ |\_$$  _|  
-   $$ |   $$ |$$ |  $$ |$$ | $$$$$$$ |         $$ |$$ /  $$ |$$ /  $$ |$$ |      $$  $$<   $$ |  $$ |    
-   $$ |   $$ |$$ |  $$ |$$ |$$  __$$ |         $$ |$$ |  $$ |$$ |  $$ |$$ |      $$ |\$$\  $$ |  $$ |$$\ 
-   $$ |   $$ |$$$$$$$  |$$ |\$$$$$$$ |         $$ |\$$$$$$  |\$$$$$$  |$$ |      $$ | \$$\ $$ |  \$$$$  |
-   \__|   \__|\_______/ \__| \_______|         \__| \______/  \______/ \__|      \__|  \__|\__|   \____/                                                                                                 
+   ▄▄▄▄▀ ▄█ ███   ▄█ ██          ▄▄▄▄▀ ████▄ ████▄ █         █  █▀ ▄█    ▄▄▄▄▀     
+▀▀▀ █    ██ █  █  ██ █ █      ▀▀▀ █    █   █ █   █ █         █▄█   ██ ▀▀▀ █        
+    █    ██ █ ▀ ▄ ██ █▄▄█         █    █   █ █   █ █         █▀▄   ██     █        
+   █     ▐█ █  ▄▀ ▐█ █  █        █     ▀████ ▀████ ███▄      █  █  ▐█    █         
+  ▀       ▐ ███    ▐    █       ▀                      ▀       █    ▐   ▀          
+                       █                                      ▀                    
+                      ▀                                                                                                                              
 '''
+
+logging.basicConfig(filename='error.log', level=logging.ERROR)
 
 def kill_box():
     while actions.check_battle():
@@ -52,7 +54,7 @@ def kill_box():
 def run():
     try:
         event_th.is_set()
-        with open(f'scripts\{Constants.SCRIPT_NAME}.json', 'r') as file:
+        with open(f'scripts/{Constants.SCRIPT_NAME}.json', 'r') as file:
             data = json.loads(file.read())
         
         while not event_th.is_set():
@@ -88,11 +90,11 @@ def run():
                     if event_th.is_set():
                         return
                 except Exception as e:
-                    print(f"Erro durante a execução: {e}")
+                    logging.error(f"Erro durante a execução geral: {e}")
     except Exception as e:
-        print(f"Erro durante a execução geral: {e}")
+        logging.error(f"Erro durante a execução geral: {e}")
 
-def key_code(key,th_group):
+def key_code(key, th_group):
     if key == keyboard.Key.esc:
         event_th.set()
         th_group.stop()

@@ -5,4 +5,4 @@ numpy
 pyautogui
 Pillow
 keyboard
-simpleaudio
+pydub

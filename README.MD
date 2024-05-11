@@ -17,14 +17,14 @@ Bem-vindo ao repositório Tibia Automation Toolkit, uma coleção abrangente de 
 ## Tabela de Funcionalidades:
 | Funcionalidade  | Suporte |
 | --------------- | ------- |
-| AutoLoot        | ✅🚧    |
+| AutoLoot        | ✅      |
 | AutoCombo       | ✅      |
-| AutoHeal        | ❌      |
-| AutoMana        | ❌      |
-| CaveBot         | 🚧     |
-| AutoAmulet      | ❌      |
-| AutoRing        | ❌      |
-| FoodEater       | ❌🚧    |
+| AutoHeal        | ✅      |
+| AutoMana        | ✅      |
+| CaveBot         | ✅      |
+| AutoAmulet      | ✅      |
+| AutoRing        | ✅      |
+| FoodEater       | 🚧      |
 | RuneMaker       | ✅🚧    |
 | SkillTrainer    | ❌      |
 
