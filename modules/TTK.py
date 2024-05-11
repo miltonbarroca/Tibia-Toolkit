@@ -79,7 +79,7 @@ def run():
                     actions.next_box(item['path'], item['wait'])
                     pg.sleep(1)    
                     pg.press('i')
-                    actions.hole_down(item['down_hole']) 
+                    actions.hole_down(item['down_hole'])
                     if event_th.is_set():
                         return
                     actions.hole_up(item['up_hole'],'img/stair_up.png',1,1)
