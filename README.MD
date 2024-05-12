@@ -32,7 +32,7 @@ Este programa é otimizado para funcionar de maneira mais eficiente em configura
 
 ## Como Contribuir:
 
-Sinta-se à vontade para contribuir relatando problemas, propondo melhorias ou enviando solicitações de pull. Juntos, podemos tornar o Auto Combo uma ferramenta ainda mais poderosa e eficiente para os Knights no Tibia.
+Sinta-se à vontade para contribuir relatando problemas, propondo melhorias ou enviando solicitações de pull. Juntos, podemos tornar o Tibia Tool Kit uma ferramenta ainda mais poderosa e eficiente para os jogadores de Tibia.
 
 ## Aviso: Em Desenvolvimento
 
