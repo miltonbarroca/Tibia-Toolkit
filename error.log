@@ -1,0 +1,147 @@
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:pynput.keyboard.Listener:Unhandled exception in listener callback
+Traceback (most recent call last):
+  File "C:\Program Files\Python312\Lib\site-packages\pynput\_util\__init__.py", line 228, in inner
+    return f(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\site-packages\pynput\keyboard\_win32.py", line 287, in _process
+    self.on_press(key)
+  File "C:\Program Files\Python312\Lib\site-packages\pynput\_util\__init__.py", line 144, in inner
+    if f(*args) is False:
+       ^^^^^^^^
+  File "d:\CURSO\projetos\AutoHotkey\modules\TTK.py", line 126, in <lambda>
+    with Listener(on_press=lambda key: key_code(key)) as listener :#, key_code(key)
+                                       ^^^^^^^^^^^^^
+TypeError: key_code() missing 1 required positional argument: 'th_group'
+ERROR:pynput.keyboard.Listener:Unhandled exception in listener callback
+Traceback (most recent call last):
+  File "C:\Program Files\Python312\Lib\site-packages\pynput\_util\__init__.py", line 228, in inner
+    return f(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\site-packages\pynput\keyboard\_win32.py", line 287, in _process
+    self.on_press(key)
+  File "C:\Program Files\Python312\Lib\site-packages\pynput\_util\__init__.py", line 144, in inner
+    if f(*args) is False:
+       ^^^^^^^^
+  File "d:\CURSO\projetos\AutoHotkey\modules\TTK.py", line 126, in <lambda>
+    with Listener(on_press=lambda key: key_code(key)) as listener : #, key_code(key,group_threads)
+                                       ^^^^^^^^^^^^^
+TypeError: key_code() missing 1 required positional argument: 'th_group'
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: PyAutoGUI fail-safe triggered from mouse moving to a corner of the screen. To disable this fail-safe, set pyautogui.FAILSAFE to False. DISABLING FAIL-SAFE IS NOT RECOMMENDED.
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 
+ERROR:root:Erro durante a execução geral: 

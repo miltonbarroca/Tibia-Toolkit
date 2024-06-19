@@ -2,6 +2,7 @@ import pyautogui as pg
 from conf import Constants
 import keyboard
 import os
+import time
 from pydub import AudioSegment
 from pydub.playback import play
 
@@ -62,14 +63,14 @@ def next_box(path,wait):
         pg.sleep(wait)
 
 loot_coordinates = [
-    (857, 382),
-    (921, 389),
-    (986, 389),
-    (991, 459),
-    (990, 520),
-    (917, 516),
-    (860, 520),
-    (857, 452)
+    (831, 384),
+    (901, 393),
+    (904, 460),
+    (911, 516),
+    (825, 525),
+    (793, 526),
+    (770, 456),
+    (774, 393)
 ]
 
 def get_loot():
@@ -78,3 +79,21 @@ def get_loot():
     for coord in loot_coordinates:
         pg.click(x=coord[0], y=coord[1], button='right')
     keyboard.release('shift')
+
+def check_status(name, delay, x, y, rgb, button_names):
+    print(f'checando {name}')
+    time.sleep(2)
+    
+    while pg.pixelMatchesColor(x, y, rgb):
+        for button_name in button_names:
+            pg.press(button_name)
+            time.sleep(delay)
+
+def check_ring():
+    if pg.pixelMatchesColor(1769, 277,(36, 39, 42)):
+        pg.press('j')
+    print('checando ring...')
+def check_amulet():
+    if pg.pixelMatchesColor(1769, 208,(82, 84, 87)):
+        pg.press('k')  
+        print('checando amuleto...')
