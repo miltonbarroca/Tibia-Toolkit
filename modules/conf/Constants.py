@@ -29,6 +29,8 @@ COR_COLAR = (70, 72, 75)
 BATTLE_REGION = (1572, 24, 154, 51)
 BATTLE_PLAYER = (0,25,171,51)
 
+BARS_REGION = (1748,299,113,28)
+
 #0 - exori mas
 #9 - exori
 #8 - exori gran
@@ -38,7 +40,7 @@ BATTLE_PLAYER = (0,25,171,51)
 
 # def check():
 #     while True:
-#         box = pg.locateOnScreen('img/battle_player.png')
+#         box = pg.locateOnScreen('img/bars.png', confidence=)
 #         print(box)
 #         pg.sleep(1)
 # check()
