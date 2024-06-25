@@ -25,10 +25,6 @@ def pixel_matches_color(region, percent, color):
     # Verifica se a cor do pixel corresponde à cor desejada
     return pixel_color == color
 
-# while True:
-#     keyboard.wait('h')
-#     print(pixel_matches_color(MANA_REGION, 50, MANA_COLOR))
-
 def manager_suplies(event):
     while not event.is_set():
         if not pixel_matches_color(LIFE_REGION, 70, LIFE_COLOR):

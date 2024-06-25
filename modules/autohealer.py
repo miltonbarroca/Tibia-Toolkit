@@ -1,5 +1,7 @@
 import threading
 import tkinter as tk
+from ttkthemes import ThemedTk
+from tkinter import ttk
 from PIL import ImageGrab
 import pyautogui as pg
 import keyboard
@@ -40,7 +42,15 @@ class App:
     def __init__(self, root):
         self.root = root
         self.root.title("Supply Manager")
-        self.root.geometry("450x470")  # Define a geometria da janela
+        self.root.geometry("400x500")  # Define a geometria da janela
+
+        style = ttk.Style()
+        style.theme_use('black')  # Use the 'clam' theme
+
+        # Apply custom styles
+        style.configure('TButton', font=("Roboto", 12))
+        style.configure('Ativado.TButton', foreground="green")
+        style.configure('Desativado.TButton', foreground="red")
 
         self.create_widgets()
         
@@ -54,50 +64,57 @@ class App:
     def create_widgets(self):
         options = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
-        tk.Label(self.root, text="Life Threshold:").pack(pady=(10, 0))
+        label_font = ('Helvetica', 12, 'bold')
+        entry_font = ('Helvetica', 12)
+
+        ttk.Label(self.root, text="Life Threshold:", font=label_font).pack(pady=(10, 0))
         self.life_threshold = tk.StringVar(self.root)
         self.life_threshold.set(options[6])  # default value is 70
-        tk.OptionMenu(self.root, self.life_threshold, *options).pack(pady=(0, 10))
+        ttk.OptionMenu(self.root, self.life_threshold, *options).pack(pady=(0, 10))
 
-        tk.Label(self.root, text="Life Button:").pack(pady=(10, 0))
-        self.life_button = tk.Entry(self.root)
+        ttk.Label(self.root, text="Life Button:", font=label_font).pack(pady=(10, 0))
+        self.life_button = ttk.Entry(self.root, font=entry_font)
         self.life_button.pack(pady=(0, 10))
         self.life_button.insert(0, "2")
 
-        tk.Label(self.root, text="Exura Threshold:").pack(pady=(10, 0))
+        ttk.Label(self.root, text="Exura Threshold:", font=label_font).pack(pady=(10, 0))
         self.exura_threshold = tk.StringVar(self.root)
         self.exura_threshold.set(options[3])  # default value is 40
-        tk.OptionMenu(self.root, self.exura_threshold, *options).pack(pady=(0, 10))
+        ttk.OptionMenu(self.root, self.exura_threshold, *options).pack(pady=(0, 10))
 
-        tk.Label(self.root, text="Exura Button:").pack(pady=(10, 0))
-        self.exura_button = tk.Entry(self.root)
+        ttk.Label(self.root, text="Exura Button:", font=label_font).pack(pady=(10, 0))
+        self.exura_button = ttk.Entry(self.root, font=entry_font)
         self.exura_button.pack(pady=(0, 10))
         self.exura_button.insert(0, "1")
 
-        tk.Label(self.root, text="Mana Threshold:").pack(pady=(10, 0))
+        ttk.Label(self.root, text="Mana Threshold:", font=label_font).pack(pady=(10, 0))
         self.mana_threshold = tk.StringVar(self.root)
         self.mana_threshold.set(options[8])  # default value is 80
-        tk.OptionMenu(self.root, self.mana_threshold, *options).pack(pady=(0, 10))
+        ttk.OptionMenu(self.root, self.mana_threshold, *options).pack(pady=(0, 10))
 
-        tk.Label(self.root, text="Mana Button:").pack(pady=(10, 0))
-        self.mana_button = tk.Entry(self.root)
+        ttk.Label(self.root, text="Mana Button:", font=label_font).pack(pady=(10, 0))
+        self.mana_button = ttk.Entry(self.root, font=entry_font)
         self.mana_button.pack(pady=(0, 20))
         self.mana_button.insert(0, "3")
 
-        button_frame = tk.Frame(self.root)
+        button_frame = ttk.Frame(self.root)
         button_frame.pack(pady=20)
 
-        self.start_button = tk.Button(button_frame, text="Start", command=self.start, width=15, height=2)
+        self.start_button = ttk.Button(button_frame, text="Start", command=self.start, width=15, style='Ativado.TButton')
         self.start_button.pack(side="left", padx=5)
 
-        self.pause_button = tk.Button(button_frame, text="Pause", command=self.pause, width=15, height=2)
-        self.pause_button.pack(side="left", padx=5)
+        # self.pause_button = ttk.Button(button_frame, text="Pause", command=self.pause, width=15, style='Desativado.TButton')
+        # self.pause_button.pack(side="left", padx=5)
 
-        self.resume_button = tk.Button(button_frame, text="Resume", command=self.resume, width=15, height=2)
-        self.resume_button.pack(side="left", padx=5)
+        # self.resume_button = ttk.Button(button_frame, text="Resume", command=self.resume, width=15, style='Ativado.TButton')
+        # self.resume_button.pack(side="left", padx=5)
 
-        self.stop_button = tk.Button(button_frame, text="Stop", command=self.stop, width=15, height=2)
+        self.stop_button = ttk.Button(button_frame, text="Stop", command=self.stop, width=15, style='Desativado.TButton')
         self.stop_button.pack(side="left", padx=5)
+        # Add signature
+        signature_font = ('Helvetica', 10, 'italic')
+        signature_label = ttk.Label(self.root, text="Tibia Tool Kit", font=signature_font)
+        signature_label.pack(side="bottom", pady=(5, 5))
 
     def start(self):
         if self.thread is None or not self.thread.is_alive():
@@ -133,6 +150,6 @@ class App:
         self.root.quit()
 
 if __name__ == "__main__":
-    root = tk.Tk()
+    root = ThemedTk(theme="black", themebg=True)
     app = App(root)
     root.mainloop()

@@ -51,7 +51,7 @@ def kill_box():
             return
         time.sleep(random.uniform(2, 2.5))
 
-def run():
+def run(event_th):
     try:
         event_th.is_set()
         with open(f'scripts/{Constants.SCRIPT_NAME}.json', 'r') as file:
@@ -92,17 +92,20 @@ def run():
         logging.error(f"Erro durante a execução geral: {e}")
 
 def key_code(key):
-    global th_suplies, th_run
+    global th_suplies, th_run, event_suplies, event_th
 
     if key == keyboard.Key.esc:
         event_th.set()
+        event_suplies.set()
         th_suplies.join()
+        th_run.join()
         return False
 
     if key == keyboard.Key.delete:
-        event_suplies.set()
+        event_suplies.clear()
+        event_th.clear()
         th_suplies = threading.Thread(target=manager_suplies, args=(event_suplies,))
-        th_run = threading.Thread(target=run)
+        th_run = threading.Thread(target=run, args=(event_th,))
         th_suplies.start()
         th_run.start()
 
@@ -110,7 +113,7 @@ def key_code(key):
 event_suplies = threading.Event()
 event_th = threading.Event()
 th_suplies = threading.Thread(target=manager_suplies, args=(event_suplies,))
-th_run = threading.Thread(target=run)
+th_run = threading.Thread(target=run, args=(event_th,))
 
 with Listener(on_press=lambda key: key_code(key)) as listener:
     listener.join()
