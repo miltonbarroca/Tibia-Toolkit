@@ -5,35 +5,22 @@ from tkinter import ttk
 from PIL import ImageGrab
 import pyautogui as pg
 import keyboard
+from healer import getHpPercentage
+import time
 
-LIFE_REGION = (1766, 304, 92, 5)
-LIFE_COLOR = (218, 79, 79)
-MANA_REGION = (1766, 316, 92, 5)
-MANA_COLOR = (67, 64, 191)
-WIDTH = 92
-
-def calculate_width(percent):
-    return int(WIDTH * percent / 100)
-
-def pixel_matches_color(region, percent, color):
-    result_width = calculate_width(percent)
-    screenshot = ImageGrab.grab(bbox=(region[0], region[1], region[0] + region[2], region[1] + region[3]))
-    pixel_color = screenshot.getpixel((result_width, region[3] - 1))
-    return pixel_color == color
-
-def check_and_press(region, threshold, color, button):
-    if not pixel_matches_color(region, threshold, color):
-        pg.press(button)
 
 def manager_supplies(stop_event, pause_event, life_threshold, life_button, exura_threshold, exura_button, mana_threshold, mana_button):
+        
     while not stop_event.is_set():
         if pause_event.is_set():
             stop_event.wait()
             continue
 
-        check_and_press(LIFE_REGION, life_threshold, LIFE_COLOR, life_button)
-        check_and_press(LIFE_REGION, exura_threshold, LIFE_COLOR, exura_button)
-        check_and_press(MANA_REGION, mana_threshold, MANA_COLOR, mana_button)
+        life = getHpPercentage()
+
+        if life <= exura_threshold:
+            pg.hotkey(exura_button)
+            time.sleep(0.100)
 
 class App:
     def __init__(self, root):
@@ -59,7 +46,7 @@ class App:
         keyboard.add_hotkey('esc', self.stop)
 
     def create_widgets(self):
-        options = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+        options = [10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
 
         label_font = ('Helvetica', 12, 'bold')
         entry_font = ('Helvetica', 12)
