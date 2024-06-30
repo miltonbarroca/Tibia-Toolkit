@@ -12,12 +12,12 @@ ManaColor = [83, 80, 218]
 BarSize = 92
 
 PAUSA_VERIFICACAO = 0.5
-ATK_SPELLS = ['9', '8', '9', '0']  # HOTKEYS das magias de ataque
+ATK_SPELLS = ['9', '8', '9', '0']
 EXETA = ['7']
 UTITO = ['4']
 ATK_COOLDOWNS = [random.uniform(2, 2.4) for _ in ATK_SPELLS]
 
-SCRIPT_NAME = 'Exotic' #mude aqui quando for adicionar outra hunt pro bot
+SCRIPT_NAME = 'Exotic'
 
 MINIMAP = (1753,26,108,112)
 
