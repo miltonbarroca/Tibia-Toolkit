@@ -2,15 +2,13 @@ import threading
 import tkinter as tk
 from ttkthemes import ThemedTk
 from tkinter import ttk
-from PIL import ImageGrab
+from PIL import Image, ImageTk, ImageOps
 import pyautogui as pg
 import keyboard
 from healer import getHpPercentage
 import time
 
-
 def manager_supplies(stop_event, pause_event, life_threshold, life_button, exura_threshold, exura_button, mana_threshold, mana_button):
-        
     while not stop_event.is_set():
         if pause_event.is_set():
             stop_event.wait()
@@ -26,7 +24,7 @@ class App:
     def __init__(self, root):
         self.root = root
         self.root.title("Supply Manager")
-        self.root.geometry("400x520")
+        self.root.geometry("400x400")
 
         style = ttk.Style()
         style.theme_use('black')
@@ -54,6 +52,7 @@ class App:
             "Mana Alta": 90
         }
 
+        self.load_images()
         self.create_widgets()
         
         self.stop_event = threading.Event()
@@ -63,6 +62,19 @@ class App:
         keyboard.add_hotkey('=', self.toggle_pause_resume)
         keyboard.add_hotkey('esc', self.stop)
 
+    def load_images(self):
+        self.health_image = Image.open("img/health.png").convert("RGBA")
+        self.health_image = ImageOps.contain(self.health_image, (30, 30))
+        self.health_image = ImageTk.PhotoImage(self.health_image)
+
+        self.exura_image = Image.open("img/exura.png").convert("RGBA")
+        self.exura_image = ImageOps.contain(self.exura_image, (30, 30))
+        self.exura_image = ImageTk.PhotoImage(self.exura_image)
+
+        self.mana_image = Image.open("img/mana.png").convert("RGBA")
+        self.mana_image = ImageOps.contain(self.mana_image, (30, 30))
+        self.mana_image = ImageTk.PhotoImage(self.mana_image)
+
     def create_widgets(self):
         life_options = list(self.life_thresholds.keys())
         exura_options = list(self.exura_thresholds.keys())
@@ -71,39 +83,58 @@ class App:
         label_font = ('Helvetica', 12, 'bold')
         entry_font = ('Helvetica', 12)
 
-        ttk.Label(self.root, text="Life Threshold:", font=label_font).pack(pady=(10, 0))
+        # Health Widgets
+        health_frame = ttk.Frame(self.root)
+        health_frame.pack(pady=(10, 5))
+
+        ttk.Label(health_frame, text="Life Threshold:", font=label_font).grid(row=0, column=0, padx=5, pady=5, sticky="w")
         self.life_threshold = tk.StringVar(self.root)
-        life_menu = ttk.OptionMenu(self.root, self.life_threshold, life_options[1], *life_options)
-        life_menu.pack(pady=(0, 10))
+        life_menu = ttk.OptionMenu(health_frame, self.life_threshold, life_options[1], *life_options)
+        life_menu.grid(row=0, column=1, padx=5, pady=5, sticky="w")
         self.life_threshold.set(life_options[1])
 
-        ttk.Label(self.root, text="Life Button:", font=label_font).pack(pady=(10, 0))
-        self.life_button = ttk.Entry(self.root, font=entry_font)
-        self.life_button.pack(pady=(0, 10))
+        ttk.Label(health_frame, image=self.health_image).grid(row=0, column=2, padx=(10, 0), pady=5)
+
+        ttk.Label(health_frame, text="Life Button:", font=label_font).grid(row=1, column=0, padx=5, pady=5, sticky="w")
+        self.life_button = ttk.Entry(health_frame, font=entry_font, width=10)
+        self.life_button.grid(row=1, column=1, padx=5, pady=5, sticky="w")
         self.life_button.bind("<KeyPress>", lambda event, widget=self.life_button: self.on_key_press(event, widget))
 
-        ttk.Label(self.root, text="Exura Threshold:", font=label_font).pack(pady=(10, 0))
+        # Exura Widgets
+        exura_frame = ttk.Frame(self.root)
+        exura_frame.pack(pady=(10, 5))
+
+        ttk.Label(exura_frame, text="Exura Threshold:", font=label_font).grid(row=0, column=0, padx=5, pady=5, sticky="w")
         self.exura_threshold = tk.StringVar(self.root)
-        exura_menu = ttk.OptionMenu(self.root, self.exura_threshold, exura_options[1], *exura_options)
-        exura_menu.pack(pady=(0, 10))
+        exura_menu = ttk.OptionMenu(exura_frame, self.exura_threshold, exura_options[1], *exura_options)
+        exura_menu.grid(row=0, column=1, padx=5, pady=5, sticky="w")
         self.exura_threshold.set(exura_options[1])
 
-        ttk.Label(self.root, text="Exura Button:", font=label_font).pack(pady=(10, 0))
-        self.exura_button = ttk.Entry(self.root, font=entry_font)
-        self.exura_button.pack(pady=(0, 10))
+        ttk.Label(exura_frame, image=self.exura_image).grid(row=0, column=2, padx=(10, 0), pady=5)
+
+        ttk.Label(exura_frame, text="Exura Button:", font=label_font).grid(row=1, column=0, padx=5, pady=5, sticky="w")
+        self.exura_button = ttk.Entry(exura_frame, font=entry_font, width=10)
+        self.exura_button.grid(row=1, column=1, padx=5, pady=5, sticky="w")
         self.exura_button.bind("<KeyPress>", lambda event, widget=self.exura_button: self.on_key_press(event, widget))
 
-        ttk.Label(self.root, text="Mana Threshold:", font=label_font).pack(pady=(10, 0))
+        # Mana Widgets
+        mana_frame = ttk.Frame(self.root)
+        mana_frame.pack(pady=(10, 5))
+
+        ttk.Label(mana_frame, text="Mana Threshold:", font=label_font).grid(row=0, column=0, padx=5, pady=5, sticky="w")
         self.mana_threshold = tk.StringVar(self.root)
-        mana_menu = ttk.OptionMenu(self.root, self.mana_threshold, mana_options[1], *mana_options)
-        mana_menu.pack(pady=(0, 10))
+        mana_menu = ttk.OptionMenu(mana_frame, self.mana_threshold, mana_options[1], *mana_options)
+        mana_menu.grid(row=0, column=1, padx=5, pady=5, sticky="w")
         self.mana_threshold.set(mana_options[1])
 
-        ttk.Label(self.root, text="Mana Button:", font=label_font).pack(pady=(0, 20))
-        self.mana_button = ttk.Entry(self.root, font=entry_font)
-        self.mana_button.pack(pady=(0, 20))
+        ttk.Label(mana_frame, image=self.mana_image).grid(row=0, column=2, padx=(10, 0), pady=5)
+
+        ttk.Label(mana_frame, text="Mana Button:", font=label_font).grid(row=1, column=0, padx=5, pady=5, sticky="w")
+        self.mana_button = ttk.Entry(mana_frame, font=entry_font, width=10)
+        self.mana_button.grid(row=1, column=1, padx=5, pady=5, sticky="w")
         self.mana_button.bind("<KeyPress>", lambda event, widget=self.mana_button: self.on_key_press(event, widget))
 
+        # Control Buttons
         button_frame = ttk.Frame(self.root)
         button_frame.pack(pady=20)
 
