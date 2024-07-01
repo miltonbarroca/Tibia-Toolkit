@@ -4,13 +4,11 @@ Bem-vindo ao repositório Tibia Automation Toolkit, uma coleção abrangente de 
 
 ## Recursos Principais:
 
-- **Combo de Magias Automático (AutoCombo) 💥:** O Auto Combo permite que os Knights executem combos de magias automaticamente, otimizando o tempo de combate e maximizando a eficácia em batalhas. Configure seus ataques e deixe o Auto Combo lidar com a execução. Inclui aleatoriedade entre as teclas para simular ações mais humanas.
+- Combo de Magias Automático (AutoCombo) 💥:** O Auto Combo permite que os Knights executem combos de magias automaticamente, otimizando o tempo de combate e maximizando a eficácia em batalhas. Configure seus ataques e deixe o Auto Combo lidar com a execução. Inclui aleatoriedade entre as teclas para simular ações mais humanas.
 
-- **Caça Automatizada 🎯 (CaveBot):** Scripts especializados para automação de caça, otimizando o processo de busca por monstros e aumentando a eficácia de experiência.
+- Caça Automatizada 🎯 (CaveBot):** Scripts especializados para automação de caça, otimizando o processo de busca por monstros e aumentando a eficácia de experiência.
 
-- **AutoHealer 🩹: **Ferramenta avançada para automatizar o processo de cura durante o jogo. Monitora sua saúde e mana, usando automaticamente poções ou magias de cura conforme necessário para manter seu personagem vivo.
-
-- **Gerenciamento de Recursos 📊:** Ferramentas para otimizar o uso de poções, runas e outros recursos.
+- AutoHealer 🩹: **Ferramenta avançada para automatizar o processo de cura de vida e mana durante o jogo. Monitora sua saúde e mana, usando automaticamente poções ou magias de cura conforme necessário para manter seu personagem vivo.
 
 ## Tabela de Funcionalidades:
 | Funcionalidade  | Suporte |
