@@ -8,24 +8,20 @@ Bem-vindo ao repositório Tibia Automation Toolkit, uma coleção abrangente de 
 
 - **Caça Automatizada 🎯 (CaveBot):** Scripts especializados para automação de caça, otimizando o processo de busca por monstros e aumentando a eficácia de experiência.
 
+- **AutoHealer 🩹: **Ferramenta avançada para automatizar o processo de cura durante o jogo. Monitora sua saúde e mana, usando automaticamente poções ou magias de cura conforme necessário para manter seu personagem vivo.
+
 - **Gerenciamento de Recursos 📊:** Ferramentas para otimizar o uso de poções, runas e outros recursos.
 
 ## Tabela de Funcionalidades:
 | Funcionalidade  | Suporte |
 | --------------- | ------- |
 | AutoCombo       | ✅      |
-| AutoHeal        | ✅      |
-| AutoMana        | ✅      |
+| AutoHealer      | ✅      |
 | CaveBot         | ✅      |
-| AutoAmulet      | ✅      |
-| AutoRing        | ✅      |
+| AutoEquip       | 🚧      |
 | FoodEater       | 🚧      |
 | RuneMaker       | ✅      |
 | SkillTrainer    | ❌      |
-
-## Requisitos de Execução:
-
-Este programa é otimizado para funcionar de maneira mais eficiente em configurações com dois monitores. No entanto, para funções menos intensivas, o módulo RuneMaker conta com uma funcionalidade que aplica transparência na tela do jogo para exibir a projeção em uma janela do OBS sobreposta a um monitor com o jogo aberto, e o outro monitor exibindo uma prévia do OBS, onde o programa realiza as checagens de pixel.
 
 ## Como Contribuir:
 
