@@ -27,7 +27,7 @@ def check_player():
         print('nenhum player encontrado...')
         return False 
     except pg.ImageNotFoundException:
-        print('player encontrado!!!!!!!!!!!!!!!!!!!!!!!')
+        print('player encontrado!!!!!!!!!')
         print('parando bot')
         play_sound()
         return True
@@ -61,33 +61,6 @@ def next_box(path,wait):
         pg.moveTo(x,y)
         pg.click()
         pg.sleep(wait)
-
-loot_coordinates = [
-    (831, 384),
-    (901, 393),
-    (904, 460),
-    (911, 516),
-    (825, 525),
-    (793, 526),
-    (770, 456),
-    (774, 393)
-]
-
-def get_loot():
-    print('Coletando loot...')
-    keyboard.press('shift')
-    for coord in loot_coordinates:
-        pg.click(x=coord[0], y=coord[1], button='right')
-    keyboard.release('shift')
-
-def check_status(name, delay, x, y, rgb, button_names):
-    print(f'checando {name}')
-    time.sleep(2)
-    
-    while pg.pixelMatchesColor(x, y, rgb):
-        for button_name in button_names:
-            pg.press(button_name)
-            time.sleep(delay)
 
 def check_ring():
     if pg.pixelMatchesColor(1769, 277,(36, 39, 42)):

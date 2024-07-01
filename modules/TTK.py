@@ -69,7 +69,7 @@ def run(event_th):
                         if event_th.is_set():
                             return
                         pg.sleep(1)
-                        actions.get_loot()
+                        pg.press('l')
                         if event_th.is_set():
                             return
                         pg.sleep(1)
