@@ -8,14 +8,11 @@ Bem-vindo ao repositório Tibia Automation Toolkit, uma coleção abrangente de 
 
 - **Caça Automatizada 🎯 (CaveBot):** Scripts especializados para automação de caça, otimizando o processo de busca por monstros e aumentando a eficácia de experiência.
 
-- **Autoloot Aprimorado 🧳:** Uma solução avançada para automatizar o processo de loot, organização e armazenamento de itens. Maximize seus ganhos sem esforço manual.
-
 - **Gerenciamento de Recursos 📊:** Ferramentas para otimizar o uso de poções, runas e outros recursos.
 
 ## Tabela de Funcionalidades:
 | Funcionalidade  | Suporte |
 | --------------- | ------- |
-| AutoLoot        | ✅      |
 | AutoCombo       | ✅      |
 | AutoHeal        | ✅      |
 | AutoMana        | ✅      |
