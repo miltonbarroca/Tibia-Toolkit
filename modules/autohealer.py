@@ -53,6 +53,7 @@ class App:
         }
 
         self.load_images()
+        self.create_background()
         self.create_widgets()
         
         self.stop_event = threading.Event()
@@ -63,29 +64,48 @@ class App:
         keyboard.add_hotkey('esc', self.stop)
 
     def load_images(self):
-        self.health_image = Image.open("img/health.png").convert("RGBA")
+        self.health_image = Image.open("img/UI/health.png").convert("RGBA")
         self.health_image = ImageOps.contain(self.health_image, (30, 30))
         self.health_image = ImageTk.PhotoImage(self.health_image)
 
-        self.exura_image = Image.open("img/exura.png").convert("RGBA")
+        self.exura_image = Image.open("img/UI/exura.png").convert("RGBA")
         self.exura_image = ImageOps.contain(self.exura_image, (30, 30))
         self.exura_image = ImageTk.PhotoImage(self.exura_image)
 
-        self.mana_image = Image.open("img/mana.png").convert("RGBA")
+        self.mana_image = Image.open("img/UI/mana.png").convert("RGBA")
         self.mana_image = ImageOps.contain(self.mana_image, (30, 30))
         self.mana_image = ImageTk.PhotoImage(self.mana_image)
+
+        self.background_image = Image.open("img/UI/background.png").convert("RGBA")
+
+    def create_background(self):
+        self.canvas = tk.Canvas(self.root, width=400, height=400)
+        self.canvas.pack(fill="both", expand=True)
+
+        self.update_background_image()
+
+        self.root.bind("<Configure>", self.on_resize)
+
+    def update_background_image(self):
+        width, height = self.root.winfo_width(), self.root.winfo_height()
+        resized_bg = self.background_image.resize((width, height), Image.LANCZOS)
+        self.bg_image = ImageTk.PhotoImage(resized_bg)
+        self.canvas.create_image(0, 0, image=self.bg_image, anchor="nw")
+
+    def on_resize(self, event):
+        self.update_background_image()
 
     def create_widgets(self):
         life_options = list(self.life_thresholds.keys())
         exura_options = list(self.exura_thresholds.keys())
         mana_options = list(self.mana_thresholds.keys())
 
-        label_font = ('Helvetica', 12, 'bold')
-        entry_font = ('Helvetica', 12)
+        label_font = ('Times New Roman', 13, 'bold')
+        entry_font = ('Times New Roman', 13)
 
         # Health Widgets
         health_frame = ttk.Frame(self.root)
-        health_frame.pack(pady=(10, 5))
+        self.canvas.create_window(200, 50, window=health_frame, anchor="center")
 
         ttk.Label(health_frame, text="Life Threshold:", font=label_font).grid(row=0, column=0, padx=5, pady=5, sticky="w")
         self.life_threshold = tk.StringVar(self.root)
@@ -102,7 +122,7 @@ class App:
 
         # Exura Widgets
         exura_frame = ttk.Frame(self.root)
-        exura_frame.pack(pady=(10, 5))
+        self.canvas.create_window(200, 150, window=exura_frame, anchor="center")
 
         ttk.Label(exura_frame, text="Exura Threshold:", font=label_font).grid(row=0, column=0, padx=5, pady=5, sticky="w")
         self.exura_threshold = tk.StringVar(self.root)
@@ -119,7 +139,7 @@ class App:
 
         # Mana Widgets
         mana_frame = ttk.Frame(self.root)
-        mana_frame.pack(pady=(10, 5))
+        self.canvas.create_window(200, 250, window=mana_frame, anchor="center")
 
         ttk.Label(mana_frame, text="Mana Threshold:", font=label_font).grid(row=0, column=0, padx=5, pady=5, sticky="w")
         self.mana_threshold = tk.StringVar(self.root)
@@ -136,7 +156,7 @@ class App:
 
         # Control Buttons
         button_frame = ttk.Frame(self.root)
-        button_frame.pack(pady=20)
+        self.canvas.create_window(200, 350, window=button_frame, anchor="center")
 
         self.start_button = ttk.Button(button_frame, text="Start", command=self.start, width=15, style='Ativado.TButton')
         self.start_button.pack(side="left", padx=5)
@@ -146,7 +166,7 @@ class App:
         
         signature_font = ('Helvetica', 10, 'italic')
         signature_label = ttk.Label(self.root, text="Tibia Tool Kit", font=signature_font)
-        signature_label.pack(side="bottom", pady=(5, 5))
+        self.canvas.create_window(200, 380, window=signature_label, anchor="center")
 
     def on_key_press(self, event, target_widget):
         target_widget.delete(0, tk.END)
