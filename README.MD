@@ -4,31 +4,22 @@ Bem-vindo ao repositório Tibia Automation Toolkit, uma coleção abrangente de 
 
 ## Recursos Principais:
 
-- **Combo de Magias Automático (AutoCombo) 💥:** O Auto Combo permite que os Knights executem combos de magias automaticamente, otimizando o tempo de combate e maximizando a eficácia em batalhas. Configure seus ataques e deixe o Auto Combo lidar com a execução. Inclui aleatoriedade entre as teclas para simular ações mais humanas.
+- Combo de Magias Automático (AutoCombo) 💥:** O Auto Combo permite que os Knights executem combos de magias automaticamente, otimizando o tempo de combate e maximizando a eficácia em batalhas. Configure seus ataques e deixe o Auto Combo lidar com a execução. Inclui aleatoriedade entre as teclas para simular ações mais humanas.
 
-- **Caça Automatizada 🎯 (CaveBot):** Scripts especializados para automação de caça, otimizando o processo de busca por monstros e aumentando a eficácia de experiência.
+- Caça Automatizada 🎯 (CaveBot):** Scripts especializados para automação de caça, otimizando o processo de busca por monstros e aumentando a eficácia de experiência.
 
-- **Autoloot Aprimorado 🧳:** Uma solução avançada para automatizar o processo de loot, organização e armazenamento de itens. Maximize seus ganhos sem esforço manual.
-
-- **Gerenciamento de Recursos 📊:** Ferramentas para otimizar o uso de poções, runas e outros recursos.
+- AutoHealer 🩹: **Ferramenta avançada para automatizar o processo de cura de vida e mana durante o jogo. Monitora sua saúde e mana, usando automaticamente poções ou magias de cura conforme necessário para manter seu personagem vivo.
 
 ## Tabela de Funcionalidades:
 | Funcionalidade  | Suporte |
 | --------------- | ------- |
-| AutoLoot        | ✅      |
 | AutoCombo       | ✅      |
-| AutoHeal        | ✅      |
-| AutoMana        | ✅      |
+| AutoHealer      | ✅      |
 | CaveBot         | ✅      |
-| AutoAmulet      | ✅      |
-| AutoRing        | ✅      |
+| AutoEquip       | 🚧      |
 | FoodEater       | 🚧      |
 | RuneMaker       | ✅      |
 | SkillTrainer    | ❌      |
-
-## Requisitos de Execução:
-
-Este programa é otimizado para funcionar de maneira mais eficiente em configurações com dois monitores. No entanto, para funções menos intensivas, o módulo RuneMaker conta com uma funcionalidade que aplica transparência na tela do jogo para exibir a projeção em uma janela do OBS sobreposta a um monitor com o jogo aberto, e o outro monitor exibindo uma prévia do OBS, onde o programa realiza as checagens de pixel.
 
 ## Como Contribuir:
 
