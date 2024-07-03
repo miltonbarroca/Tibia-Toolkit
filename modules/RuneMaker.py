@@ -30,7 +30,7 @@ def generate_widget(widget, row, column, sticky="NSEW", columnspan=None, **kwarg
     return my_widget
 
 def load_trash():
-    caminho_imagem = os.path.join('img', 'trash.png')    
+    caminho_imagem = os.path.join('img/UI/trash.png')    
     load_img = Image.open(caminho_imagem)
     resized_image = load_img.resize((20, 20))
     diretorio_principal = os.path.dirname(os.path.abspath(load_img.filename))  
