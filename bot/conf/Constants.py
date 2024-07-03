@@ -7,7 +7,10 @@ EXETA = ['7']
 UTITO = ['4']
 ATK_COOLDOWNS = [random.uniform(2, 2.4) for _ in ATK_SPELLS]
 
-SCRIPT_NAME = 'teste' #mude aqui quando for adicionar outra hunt pro bot
+SCRIPT_NAME = 'centipe' #mude aqui quando for adicionar outra hunt pro bot
+#SCRIPT_NAME = 'rotworm' #mude aqui quando for adicionar outra hunt pro bot
+#SCRIPT_NAME = 'swamptroll' #mude aqui quando for adicionar outra hunt pro bot
+#SCRIPT_NAME = 'orc' #mude aqui quando for adicionar outra hunt pro bot
 
 MINIMAP = (1112, 70, 104, 111)
 
@@ -27,5 +30,8 @@ PIXEL_COLAR = (1768, 181)
 COR_COLAR = (70, 72, 75)
 
 BATTLE_REGION = (933, 71, 95, 40)
-BATTLE_PLAYER = (0, 25, 171, 51)
+BATTLE_PLAYER = (3, 580, 104, 40)
 RING_REGION = (1109, 271, 36, 37)
+
+TOKEN = "YOUR_BOT_TOKEN"
+CHAT_ID = 'CHAT_ID_OR_CHANNEL_ID'
