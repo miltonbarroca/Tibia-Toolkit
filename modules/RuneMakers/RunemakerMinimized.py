@@ -1,7 +1,7 @@
 import ctypes
 import time
 
-hdwn = ctypes.windll.user32.FindWindowW(0, 'Tibia - Brunao Qqmuda') #nome da janela do tibia
+hdwn = ctypes.windll.user32.FindWindowW(0, 'Tibia - ') #nome da janela do tibia
 WM_KEYDOWN = 0x0100
 WM_KEYUP = 0x0101
 
