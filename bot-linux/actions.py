@@ -34,7 +34,7 @@ def check_player_position():
 
 def next_box(path,wait):
     try:
-        flag = pg.locateOnScreen(path, confidence=0.8, region=Constants.MINIMAP)
+        flag = pg.locateOnScreen(path, confidence=0.7, region=Constants.MINIMAP)
         if flag:
             x,y = pg.center(flag)
             pg.moveTo(x,y)

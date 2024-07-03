@@ -7,7 +7,10 @@ EXETA = ['7']
 UTITO = ['4']
 ATK_COOLDOWNS = [random.uniform(2, 2.4) for _ in ATK_SPELLS]
 
-SCRIPT_NAME = 'teste' #mude aqui quando for adicionar outra hunt pro bot
+SCRIPT_NAME = 'centipe' #mude aqui quando for adicionar outra hunt pro bot
+#SCRIPT_NAME = 'rotworm' #mude aqui quando for adicionar outra hunt pro bot
+#SCRIPT_NAME = 'swamptroll' #mude aqui quando for adicionar outra hunt pro bot
+#SCRIPT_NAME = 'orc' #mude aqui quando for adicionar outra hunt pro bot
 
 MINIMAP = (1112, 70, 104, 111)
 
