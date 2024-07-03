@@ -5,7 +5,7 @@ from tkinter import ttk
 from PIL import Image, ImageTk, ImageOps
 import pyautogui as pg
 import keyboard
-from healer import getHpPercentage
+from healer import getHpPercentage, getManaPercentage
 import time
 
 def manager_supplies(stop_event, pause_event, life_threshold, life_button, exura_threshold, exura_button, mana_threshold, mana_button):
@@ -15,15 +15,25 @@ def manager_supplies(stop_event, pause_event, life_threshold, life_button, exura
             continue
 
         life = getHpPercentage()
+        mana = getManaPercentage()
 
-        if life <= exura_threshold:
-            pg.hotkey(exura_button)
+        if life is not None:
+            if life <= exura_threshold:
+                pg.hotkey(exura_button)
+                time.sleep(0.100)
+
+            if life <= life_threshold:
+                pg.hotkey(life_button)
+                time.sleep(0.100)
+
+        if mana is not None and mana <= mana_threshold:
+            pg.hotkey(mana_button)
             time.sleep(0.100)
 
 class App:
     def __init__(self, root):
         self.root = root
-        self.root.title("Supply Manager")
+        self.root.title("Auto Healer ")
         self.root.geometry("400x400")
 
         style = ttk.Style()

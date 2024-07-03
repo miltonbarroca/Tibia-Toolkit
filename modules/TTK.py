@@ -109,7 +109,6 @@ def key_code(key):
         th_suplies.start()
         th_run.start()
 
-# Definir eventos e threads antes de usá-los
 event_suplies = threading.Event()
 event_th = threading.Event()
 th_suplies = threading.Thread(target=manager_suplies, args=(event_suplies,))
