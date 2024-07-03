@@ -6,6 +6,10 @@ while True:
         #if battle != None:
         #    print(f"Regiao battle detectada - {battle}")
 
+        player = pyautogui.locateOnScreen('imgs/battle_player.png', confidence=0.8)
+        if player != None:
+            print(f"Regiao player detectada - {player}")
+
         minimap = pyautogui.locateOnScreen('imgs/minimap_region.png', confidence=0.8)
         if minimap != None:
             print(f"Regiao minimap detectada - {minimap}")

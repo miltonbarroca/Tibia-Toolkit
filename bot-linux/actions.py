@@ -2,6 +2,8 @@ import pyautogui as pg
 from conf import Constants
 import os
 import random
+import asyncio
+from telegramsend import send_message
 
 def check_battle():
     try:
@@ -16,12 +18,11 @@ def check_player():
     try:
         pg.locateOnScreen('imgs/battle_player.png', confidence=0.8, region=Constants.BATTLE_PLAYER)
         print('nenhum player encontrado...')
-        return True
+        return False
     except pg.ImageNotFoundException:
         print('player encontrado!!!!!!!!!!!!!!!!!!!!!!!')
-        print('parando bot')
-        play_sound()
-        return False
+        asyncio.run(send_message(text='Player na hunt !!!', chat_id=Constants.CHAT_ID))
+        return True
 
 def check_player_position():
     try:
