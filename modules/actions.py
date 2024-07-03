@@ -2,6 +2,7 @@ import pyautogui as pg
 from conf import Constants
 import keyboard
 import os
+import time
 from pydub import AudioSegment
 from pydub.playback import play
 
@@ -26,7 +27,7 @@ def check_player():
         print('nenhum player encontrado...')
         return False 
     except pg.ImageNotFoundException:
-        print('player encontrado!!!!!!!!!!!!!!!!!!!!!!!')
+        print('player encontrado!!!!!!!!!')
         print('parando bot')
         play_sound()
         return True
@@ -61,20 +62,11 @@ def next_box(path,wait):
         pg.click()
         pg.sleep(wait)
 
-loot_coordinates = [
-    (857, 382),
-    (921, 389),
-    (986, 389),
-    (991, 459),
-    (990, 520),
-    (917, 516),
-    (860, 520),
-    (857, 452)
-]
-
-def get_loot():
-    print('Coletando loot...')
-    keyboard.press('shift')
-    for coord in loot_coordinates:
-        pg.click(x=coord[0], y=coord[1], button='right')
-    keyboard.release('shift')
+def check_ring():
+    if pg.pixelMatchesColor(1769, 277,(36, 39, 42)):
+        pg.press('j')
+    print('checando ring...')
+def check_amulet():
+    if pg.pixelMatchesColor(1769, 208,(82, 84, 87)):
+        pg.press('k')  
+        print('checando amuleto...')
