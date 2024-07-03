@@ -6,7 +6,7 @@ from conf import Constants
 
 @lru_cache(maxsize=None)
 def getHpIcon():
-    image = os.path.join('img/heart.png')
+    image = os.path.join('img', 'heart.png')
     hpIconPosition = locateImage(image, center=True)
     if hpIconPosition is None:
         return 
@@ -41,41 +41,3 @@ def getHpPercentage():
     
     bar = getHpBar(hpIcon)
     return getBarPercentage(bar, Constants.LifeColor)
-
-@lru_cache(maxsize=None)
-def getManaIcon():
-    image = os.path.join('img/bolt.png')
-    manaIconPosition = locateImage(image, center=True)
-    if manaIconPosition is None:
-        return 
-    return manaIconPosition
-
-def getManaBar(icon):
-    return int(icon.x + 10), int(icon.y)
-
-def getBarPercentage(bar, colors):
-    barSize = Constants.BarSize
-    low, high = 0, barSize - 1
-
-    if pg.pixelMatchesColor(bar[0] + barSize - 3, bar[1], colors):
-        return 100
-    
-    while low < high:
-        mid = (low + high) // 2
-        if pg.pixelMatchesColor(bar[0] + mid, bar[1], colors):
-            low = mid + 1
-        else:
-            high = mid
-
-    if low == 0 and not pg.pixelMatchesColor(bar[0], bar[1], colors):
-        return 0
-    else:
-        return (low * 100) // barSize
-
-def getManaPercentage():
-    manaIcon = getManaIcon()
-    if manaIcon is None:
-        return None
-    
-    bar = getManaBar(manaIcon)
-    return getBarPercentage(bar, Constants.ManaColor)
