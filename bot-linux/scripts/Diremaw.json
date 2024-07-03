@@ -1,0 +1,56 @@
+[
+    {
+        "path": "img/flags/flag_0.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 11
+    },
+    {
+        "path": "img/flags/flag_3.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 10
+    },
+    {
+        "path": "img/flags/flag_4.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 6
+    },
+    {
+        "path": "img/flags/flag_5.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 4
+    },
+    {
+        "path": "img/flags/flag_6.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 5
+    },
+    {
+        "path": "img/flags/flag_7.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 4
+    },
+    {
+        "path": "img/flags/flag_8.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 4
+    },
+    {
+        "path": "img/flags/flag_10.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 7
+    },
+    {
+        "path": "img/flags/flag_11.png",
+        "down_hole": 0,
+        "up_hole": 0,
+        "wait": 4
+    }
+]
