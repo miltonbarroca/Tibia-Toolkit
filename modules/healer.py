@@ -42,3 +42,23 @@ def getHpPercentage():
     
     bar = getHpBar(hpIcon)
     return getBarPercentage(bar, Constants.LifeColor)
+
+# Mana Bar
+
+@lru_cache(maxsize=None)
+def getManaIcon():
+    manaIconPosition = locateImage(folder_path + 'bolt', center=True)
+    if manaIconPosition is None:
+        return 
+    return manaIconPosition
+
+def getManaBar(icon):
+    return int(icon.x + 10), int(icon.y)
+
+def getManaPercentage():
+    manaIcon = getManaIcon()
+    if manaIcon is None:
+        return None
+    
+    bar = getManaBar(manaIcon)
+    return getBarPercentage(bar, Constants.ManaColor)

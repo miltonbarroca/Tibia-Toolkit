@@ -33,7 +33,7 @@ def manager_supplies(stop_event, pause_event, life_threshold, life_button, exura
 class App:
     def __init__(self, root):
         self.root = root
-        self.root.title("Auto Healer ")
+        self.root.title("Auto Healer")
         self.root.geometry("400x400")
 
         style = ttk.Style()
@@ -45,21 +45,21 @@ class App:
         style.configure('Desativado.TButton', foreground="red")
 
         self.life_thresholds = {
-            "Vida Baixa": 30,
-            "Vida Média": 60,
-            "Vida Alta": 90
+            "Low Life": 30,
+            "Mid Life": 60,
+            "High Life": 90
         }
 
         self.exura_thresholds = {
-            "Exura Baixa": 30,
-            "Exura Média": 60,
-            "Exura Alta": 90
+            "Low Life": 30,
+            "Mid Life": 60,
+            "High Life": 90
         }
 
         self.mana_thresholds = {
-            "Mana Baixa": 30,
-            "Mana Média": 60,
-            "Mana Alta": 90
+            "Low Mana": 30,
+            "Mid Mana": 60,
+            "High Mana": 90
         }
 
         self.load_images()
