@@ -16,7 +16,9 @@ ATK_COOLDOWNS = [random.uniform(2, 2.4) for _ in ATK_SPELLS]
 
 #SCRIPT_NAME = 'centipe' #mude aqui quando for adicionar outra hunt pro bot
 #SCRIPT_NAME = 'rotworm' #mude aqui quando for adicionar outra hunt pro bot
-SCRIPT_NAME = 'lagarto' #mude aqui quando for adicionar outra hunt pro bot
+SCRIPT_NAME = 'corym2' #mude aqui quando for adicionar outra hunt pro bot
+#SCRIPT_NAME = 'corym' #mude aqui quando for adicionar outra hunt pro bot
+#SCRIPT_NAME = 'lagarto' #mude aqui quando for adicionar outra hunt pro bot
 #SCRIPT_NAME = 'swamptroll' #mude aqui quando for adicionar outra hunt pro bot
 #SCRIPT_NAME = 'orc' #mude aqui quando for adicionar outra hunt pro bot
 
@@ -42,6 +44,7 @@ BATTLE_PLAYER = (3, 580, 104, 40)
 RING_REGION = (1109, 271, 36, 37)
 LOGIN_REGION = (858, 68, 221, 26)
 BARRA_REGION = (490, 105, 110, 15)
+FOLLOW_REGION = (1252, 211, 19, 19)
 
 TOKEN = "7462850630:AAFzfuIG90Gijz1tIhOyEO-4grgMSygmD7c"
 CHAT_ID = '127209668'

@@ -28,6 +28,17 @@ def check_food(food_key):
     except pg.ImageNotFoundException:
         print('sem fome')
 
+def check_follow():
+    try:
+        follow = pg.locateOnScreen('imgs/status/follow.png', confidence=0.7, region=Constants.FOLLOW_REGION)
+        print('nao esta seguindo monstros !!!')
+        if follow:
+            x,y = pg.center(follow)
+            pg.moveTo(x,y)
+            pg.click()
+    except pg.ImageNotFoundException:
+        print('seguindo monstros !!!')
+
 def check_battle():
     try:
         pg.locateOnScreen('imgs/battle_region.png', confidence=0.8, region=Constants.BATTLE_REGION)
@@ -71,36 +82,15 @@ def next_box(path,wait):
     except pg.ImageNotFoundException:
         print('ImageNotFoundException: image not found')
 
-
-loot_coordinates = [
-    (491, 336),
-    (495, 376),
-    (503, 419),
-    (550, 419),
-    (595, 416),
-    (595, 378),
-    (599, 337),
-    (549, 336)
-]
-
-def get_loot():
-    print('Coletando loot...')
-    random.shuffle(loot_coordinates)
-    pg.keyDown('shift')
-    for coord in loot_coordinates:
-        pg.click(x=coord[0], y=coord[1], button='right')
-    pg.keyUp('shift')
-
-def check_amulet():
+def check_amulet(amulet_key):
     if pg.pixelMatchesColor(1769, 208,(82, 84, 87)):
-        pg.press('k')
+        pg.press(amulet_key)
         print('checando amuleto...')
 
-def check_ring():
+def check_ring(ring_key):
     try:
         pg.locateOnScreen('imgs/ring_region.png', confidence=0.8, region=Constants.RING_REGION)
         print('ring vazio...')
-        return False
+        pg.press(ring_key)
     except pg.ImageNotFoundException:
         print('ring sendo utilizado...')
-        return True

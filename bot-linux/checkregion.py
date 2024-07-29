@@ -18,9 +18,13 @@ while True:
         #if ring != None:
         #    print(f"Regiao ring detectada - {ring}")
 
-        barra = pyautogui.locateOnScreen('imgs/status/barra.png', confidence=0.8)
-        if barra != None:
-            print(f"Regiao barra detectada - {barra}")
+        #barra = pyautogui.locateOnScreen('imgs/status/barra.png', confidence=0.8)
+        #if barra != None:
+        #    print(f"Regiao barra detectada - {barra}")
+
+        follow = pyautogui.locateOnScreen('imgs/status/follow.png', confidence=0.8)
+        if follow != None:
+            print(f"Regiao follow detectada - {follow}")
 
     except pyautogui.ImageNotFoundException:
         print('ImageNotFoundException: image not found')
