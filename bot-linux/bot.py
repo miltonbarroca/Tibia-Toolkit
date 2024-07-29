@@ -10,6 +10,7 @@ from threading import Thread, Event
 
 # force use of ImageNotFoundException
 pg.useImageNotFoundException()
+pg.FAILSAFE = False
 
 def monitor_status():
     while not event_th.is_set():
@@ -32,15 +33,11 @@ def bot():
                 return
             for item in data:
                 actions.next_box(item['path'], item['wait'])
-                actions.check_follow()
                 if event_th.is_set():
                     return
                 while actions.check_battle():
                     if event_th.is_set():
                         return
-                    if actions.check_player_position():
-                        actions.next_box(item['path'], item['wait'])
-                        actions.check_follow()
                     pg.press('=')
                     time.sleep(5)
                     pg.press('l')
