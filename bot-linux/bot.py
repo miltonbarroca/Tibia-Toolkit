@@ -12,41 +12,53 @@ while True:
             if not actions.check_ring():
                 pg.press('f11')
             actions.next_box(item['path'], item['wait'])
-            #pg.press('f3')
-            #time.sleep(1)
-            pg.press('f8')
-            time.sleep(1)
-            pg.press('f9')
-            time.sleep(1)
-            pg.press('f10')
-            time.sleep(1)
+            actions.check_food('f')
+            actions.check_life('F1','F3')
+            actions.check_mana('F2')
             if not actions.check_ring():
                 pg.press('f11')
             while actions.check_battle():
                 pg.press('=')
                 time.sleep(5)
                 pg.press('l')
-                #pg.press('f3')
+                actions.check_food('f')
+                actions.check_life('F1','F3')
+                actions.check_mana('F2')
                 if not actions.check_ring():
                     pg.press('f11')
             if actions.check_player_position():
                 if not actions.check_ring():
                     pg.press('f11')
                 actions.next_box(item['path'], item['wait'])
-                #pg.press('f3')
-                #time.sleep(1)
-                pg.press('f8')
-                time.sleep(1)
-                pg.press('f9')
-                time.sleep(1)
-                pg.press('f10')
-                time.sleep(1)
+                actions.check_food('f')
+                actions.check_life('F1','F3')
+                actions.check_mana('F2')
                 if not actions.check_ring():
                     pg.press('f11')
                 while actions.check_battle():
                     pg.press('=')
                     time.sleep(5)
                     pg.press('l')
-                    #pg.press('f3')
+                    actions.check_food('f')
+                    actions.check_life('F1','F3')
+                    actions.check_mana('F2')
+                    if not actions.check_ring():
+                        pg.press('f11')
+            if actions.check_player_position():
+                if not actions.check_ring():
+                    pg.press('f11')
+                actions.next_box(item['path'], item['wait'])
+                actions.check_food('f')
+                actions.check_life('F1','F3')
+                actions.check_mana('F2')
+                if not actions.check_ring():
+                    pg.press('f11')
+                while actions.check_battle():
+                    pg.press('=')
+                    time.sleep(5)
+                    pg.press('l')
+                    actions.check_food('f')
+                    actions.check_life('F1','F3')
+                    actions.check_mana('F2')
                     if not actions.check_ring():
                         pg.press('f11')

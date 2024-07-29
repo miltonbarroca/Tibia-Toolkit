@@ -4,6 +4,29 @@ import os
 import random
 import asyncio
 from telegramsend import send_message
+from datetime import datetime
+from healer import getHpPercentage, getManaPercentage
+
+def check_life(lf_bt,life_button):
+    life = getHpPercentage()
+    if life is not None:
+        if life <= 95:
+            pg.hotkey(life_button)
+        if life <= 50:
+            pg.hotkey(lf_bt)
+
+def check_mana(mana_button):
+     mana = getManaPercentage()
+     if mana is not None and mana <= 50:
+         pg.hotkey(mana_button)
+
+def check_food(food_key):
+    try:
+        pg.locateOnScreen('imgs/status/food.png', confidence=0.8, region=Constants.BARRA_REGION)
+        print('com fome !!!')
+        pg.press(food_key)
+    except pg.ImageNotFoundException:
+        print('sem fome')
 
 def check_battle():
     try:
@@ -21,6 +44,9 @@ def check_player():
         return False
     except pg.ImageNotFoundException:
         print('player encontrado!!!!!!!!!!!!!!!!!!!!!!!')
+        arquivo = datetime.now().strftime('%d%m%Y%H%M')
+        pg.screenshot(f'imgs/alert/{arquivo}.png')
+        asyncio.run(send_photo(photo=open(f'imgs/alert/{arquivo}.png', 'rb'), chat_id=CHAT_ID))
         asyncio.run(send_message(text='Player na hunt !!!', chat_id=Constants.CHAT_ID))
         return True
 
