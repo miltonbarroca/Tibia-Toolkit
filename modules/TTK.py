@@ -7,10 +7,11 @@ import json
 import my_thread
 import actions
 import logging
-from CheckStatus import *
+from checkstatus import *
 from conf import Constants
 from pynput import keyboard
 from pynput.keyboard import Listener
+import pygame
 
 '''
    ▄▄▄▄▀ ▄█ ███   ▄█ ██          ▄▄▄▄▀ ████▄ ████▄ █         █  █▀ ▄█    ▄▄▄▄▀     
@@ -24,6 +25,14 @@ from pynput.keyboard import Listener
 
 logging.basicConfig(filename='error.log', level=logging.ERROR)
 
+
+ALARM_SOUND = 'sound\evacuation_alarm.wav'
+
+def play_alarm():
+    """Função para tocar o alarme."""
+    pygame.mixer.init()
+    pygame.mixer.music.load(ALARM_SOUND)
+    pygame.mixer.music.play()
 
 def kill_box():
     while actions.check_battle():
@@ -53,26 +62,29 @@ def kill_box():
 
 def run(event_th):
     try:
-        event_th.is_set()
         with open(f'scripts/{Constants.SCRIPT_NAME}.json', 'r') as file:
             data = json.loads(file.read())
         
         while not event_th.is_set():
+            if actions.check_player():
+                print("Player detected. Stopping bot execution and playing alarm.")
+                play_alarm()  # Toca o alarme
+                event_th.set()  # Para a execução do bot
+                return
             for item in data:
                 try:
-                    if event_th.is_set():
+                    if event_th.is_set() or actions.check_player():
                         return
                     while actions.check_battle():
                         pg.sleep(1)
                         pg.press('4')
                         kill_box()
-                        if event_th.is_set():
+                        if event_th.is_set() or actions.check_player():
                             return
                         pg.sleep(1)
                         pg.press('l')
-                        if event_th.is_set():
+                        if event_th.is_set() or actions.check_player():
                             return
-                        pg.sleep(1)
                         pg.sleep(1)
                         pg.press('i')
                     actions.next_box(item['path'], item['wait'])

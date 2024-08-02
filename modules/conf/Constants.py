@@ -31,3 +31,17 @@ BATTLE_REGION = (1572, 24, 154, 51)
 BATTLE_PLAYER = (0,25,171,51)
 
 BARS_REGION = (1748,299,113,28)
+# def check():
+#     while True:
+#         try:
+#             box = pg.locateOnScreen('img/battle_player.png', confidence=0.8)
+#             if box is not None:
+#                 left, top, width, height = box
+#                 print(f"Coordinates: (left: {left}, top: {top}, width: {width}, height: {height})")
+#             else:
+#                 print("Image not found.")
+#         except Exception as e:
+#             print(f"Error: {e}")
+#         pg.sleep(1)
+
+# check()
