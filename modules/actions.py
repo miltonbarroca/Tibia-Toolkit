@@ -1,6 +1,15 @@
 import pyautogui as pg
 from conf import Constants
 
+def check_battle():
+    try:
+        pg.locateOnScreen('img/battle_region.png', region=Constants.BATTLE_REGION)
+        print('Battle vazio,indo para proxima box...')
+        return False 
+    except pg.ImageNotFoundException:
+        print('Monstros encontrados')
+        return True
+        
 def check_player():
     try:
         pg.locateOnScreen('img/battle_player.png', region=Constants.BATTLE_PLAYER)
