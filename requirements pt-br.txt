@@ -1,0 +1,8 @@
+pyautogui
+keyboard
+pydub
+random
+time
+json
+logging
+pynput
