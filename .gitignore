@@ -2,4 +2,4 @@ env
 .pyc
 __pycache__
 image.py
-__innit__
+__init__
